@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">My expenses</string>
+    <string name="list_expenses_menu_bottom">List expenses</string>
+    <string name="categories">Categories</string>
+    <string name="reports">Reports</string>
+</resources>

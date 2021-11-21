@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мои расходы</string>
+    <string name="list_expenses_menu_bottom">Список затрат</string>
+    <string name="categories">Категории</string>
+    <string name="reports">Отчёты</string>
+</resources>
