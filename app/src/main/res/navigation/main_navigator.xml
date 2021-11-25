@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigator"
+    app:startDestination="@id/navigation_expenses_list">
+
+    <fragment
+        android:id="@+id/navigation_expenses_list"
+        android:name="com.khaymoev.my_expenses.ui.expenses_list.ExpensesListFragment"
+        android:label="@string/list_expenses_menu_bottom"
+        tools:layout="@layout/fragment_expenses_list" />
+
+    <fragment
+        android:id="@+id/navigation_categories_list"
+        android:name="com.khaymoev.my_expenses.ui.categories_list.CategoriesListFragment"
+        android:label="@string/list_categories_menu_bottom"
+        tools:layout="@layout/fragment_categories_list" />
+
+    <fragment
+        android:id="@+id/navigation_reports"
+        android:name="com.khaymoev.my_expenses.ui.reports.ReportsFragment"
+        android:label="@string/reports_menu_bottom"
+        tools:layout="@layout/fragment_reports" />
+
+</navigation>
