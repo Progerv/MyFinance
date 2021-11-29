@@ -1,8 +1,8 @@
 package com.khaymoev.my_expenses.repository.expensesList
 
-import com.khaymoev.my_expenses.common.Result
+import androidx.lifecycle.LiveData
+import com.khaymoev.my_expenses.data.local.database.ExpensesListEntity
 import com.khaymoev.my_expenses.models.Expense
-import com.khaymoev.my_expenses.utils.Constants
 import javax.inject.Inject
 
 class ExpensesListRepository @Inject constructor(
@@ -11,7 +11,7 @@ class ExpensesListRepository @Inject constructor(
     /**
      * Список всех криптовалют
      */
-    val allCoinsList = expensesListLocalDataSource.allExpensesList
+    val allExpensesList: LiveData<List<ExpensesListEntity>> = expensesListLocalDataSource.allExpensesList
 
     /**
      * Добавляем затрату в базу данных

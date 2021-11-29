@@ -2,7 +2,6 @@ package com.khaymoev.my_expenses.data.local.database
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 
 /**
@@ -12,12 +11,13 @@ import androidx.room.PrimaryKey
  * @param name имя расхода
  *
  */
-@Entity(tableName = "expenses_list")
+
 //    foreignKeys = [ForeignKey(entity = CategoriesListEntity::class,
 //        parentColumns = arrayOf("id"),
 //        childColumns = arrayOf("category"),
 //        onDelete = CASCADE)]
 //)
+@Entity(tableName = "expenses_list")
 data class ExpensesListEntity(
     @PrimaryKey(autoGenerate = true) val id: Long?,
     val name: String,
@@ -25,8 +25,20 @@ data class ExpensesListEntity(
     val amount: Float = 0F
 )
 
-@Entity(tableName = "categories_list")
-data class CategoriesListEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val name: String
-)
+//@Entity(tableName = "expenses_list", foreignKeys = [ForeignKey(entity = CategoriesListEntity::class,
+//    parentColumns = arrayOf("id"),
+//    childColumns = arrayOf("category"),
+//    onDelete = ForeignKey.CASCADE
+//)])
+//data class ExpensesListEntity(
+//    @PrimaryKey(autoGenerate = true) val id: Long?,
+//    val name: String,
+//    val category: Long? = null,
+//    val amount: Float = 0F
+//)
+//
+//@Entity(tableName = "categories_list")
+//data class CategoriesListEntity(
+//    @PrimaryKey(autoGenerate = true) val id: Long,
+//    val name: String
+//)

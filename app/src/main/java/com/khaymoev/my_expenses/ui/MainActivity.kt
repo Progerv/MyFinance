@@ -9,12 +9,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.NavigationHost
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity: AppCompatActivity(), NavigationHost {
 
     private val viewModel: MainViewModel by viewModels()

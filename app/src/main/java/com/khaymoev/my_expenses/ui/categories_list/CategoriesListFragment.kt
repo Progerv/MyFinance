@@ -9,7 +9,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.MainNavigationFragment
 import com.khaymoev.my_expenses.databinding.FragmentCategoriesListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CategoriesListFragment: MainNavigationFragment() {
 
     private val viewModel: CategoriesListViewModel by viewModels()
