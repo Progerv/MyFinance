@@ -2,8 +2,7 @@ package com.khaymoev.my_expenses.repository.expensesList
 
 import androidx.lifecycle.LiveData
 import com.khaymoev.my_expenses.data.local.database.ExpensesDatabase
-import com.khaymoev.my_expenses.data.local.database.ExpensesListEntity
-import com.khaymoev.my_expenses.models.Expense
+import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import javax.inject.Inject
 
 class ExpensesListLocalDataSource @Inject constructor(private val database: ExpensesDatabase) {
@@ -11,14 +10,14 @@ class ExpensesListLocalDataSource @Inject constructor(private val database: Expe
     /**
      * Получение полного списка затрат хранящихся в базе данных
      */
-    val allExpensesList: LiveData<List<ExpensesListEntity>> = database.expensesListDao().expensesList()
+    val allExpensesList: LiveData<List<ExpenseEntity>> = database.expensesListDao().expensesList()
 
     /**
      * Вставляет данные в базу данных
      *
-     * @param expensesToInsert список объкетов [ExpensesListEntity]
+     * @param expensesToInsert список объкетов [ExpenseEntity]
      */
-    suspend fun insertExpensesIntoDatabase(expensesToInsert: List<ExpensesListEntity>) {
+    suspend fun insertExpensesIntoDatabase(expensesToInsert: List<ExpenseEntity>) {
         //проверяем список на пустоту
         if (expensesToInsert.isNotEmpty()) {
             //если список не пустой вставляем список в базу данных
@@ -29,14 +28,9 @@ class ExpensesListLocalDataSource @Inject constructor(private val database: Expe
     /**
      * Вставляет данные в базу данных
      *
-     * @param expense объект [ExpensesListEntity]
+     * @param expense объект [ExpenseEntity]
      */
-    suspend fun insertExpenseIntoDatabase(expense: Expense) {
-        val expenseToInsert = ExpensesListEntity(
-            expense.id,
-            expense.name,
-            expense.amount
-        )
-        return database.expensesListDao().insertExpense(expenseToInsert)
+    suspend fun insertExpenseIntoDatabase(expense: ExpenseEntity) {
+        return database.expensesListDao().insertExpense(expense)
     }
 }

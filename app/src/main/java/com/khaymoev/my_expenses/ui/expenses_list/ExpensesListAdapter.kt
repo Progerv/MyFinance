@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.khaymoev.my_expenses.R
-import com.khaymoev.my_expenses.data.local.database.ExpensesListEntity
+import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import com.khaymoev.my_expenses.utils.refactorString
 import kotlinx.android.synthetic.main.item_expense_list.view.*
 
@@ -28,12 +28,14 @@ interface OnItemClickCallback {
  *
  * @param onItemClickCallback интерфейс для обработки кликов [OnItemClickCallback]
  */
-class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback): RecyclerView.Adapter<ExpensesListAdapter.ExpensesListViewHolder>()  {
+class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback) :
+    RecyclerView.Adapter<ExpensesListAdapter.ExpensesListViewHolder>() {
+
 
     /**
-     * Переменная хранящая список объектов [ExpensesListEntity], по умолчанию содержит пустой список
+     * Переменная хранящая список объектов [ExpenseEntity], по умолчанию содержит пустой список
      */
-    private val expensesList: MutableList<ExpensesListEntity> = mutableListOf()
+    private val expensesList: MutableList<ExpenseEntity> = mutableListOf()
 
     /**
      * Создает новый объет [ExpensesListViewHolder] каждый раз когда RecyclerView в этом нуждается.
@@ -53,23 +55,23 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback):
     }
 
     /**
-    * Возвращает общее количество элементов списка.
-    */
+     * Возвращает общее количество элементов списка.
+     */
     override fun getItemCount(): Int = expensesList.size
 
     /**
      * Функция обновляющая список затрат [expensesList] внутри RecyclerView
      *
-     * @param list список объектов [ExpensesListEntity]
+     * @param list список объектов [ExpenseEntity]
      */
-    fun updateList(list: List<ExpensesListEntity>) {
+    fun updateList(list: List<ExpenseEntity>) {
         this.expensesList.clear() //очистка списка криптовалют
         this.expensesList.addAll(list) //заполнение списка новыми данными
         notifyDataSetChanged()  //обновление RecyclerView
     }
 
-    class ExpensesListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(model: ExpensesListEntity, onItemClickCallback: OnItemClickCallback) {
+    class ExpensesListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(model: ExpenseEntity, onItemClickCallback: OnItemClickCallback) {
 
             //устаналвиваем имя затраты
             itemView.expenseItemTextView.text = model.name
@@ -80,11 +82,10 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback):
             //обрабатываем клик по элементу списка
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClick(
-                    model.id!!,
+                    model.idExpense,
                     model.name
                 )
             }
         }
     }
-
 }

@@ -17,5 +17,4 @@ class ExpenseLocalDataSource @Inject constructor(private val database: ExpensesD
      * @param id
      */
     fun expenseFromId(id: Long) = database.expensesListDao().expenseFromId(id)
-
 }

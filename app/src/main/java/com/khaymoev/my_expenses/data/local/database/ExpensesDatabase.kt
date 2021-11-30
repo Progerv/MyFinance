@@ -10,7 +10,7 @@ import com.khaymoev.my_expenses.utils.Constants.DATABASE_VERSION
 /**
  * Класс [ExpensesDatabase] управляет базой данных Room внутри приложения
  */
-@Database(entities = [ExpensesListEntity::class], version = DATABASE_VERSION, exportSchema = false)
+@Database(entities = [ExpenseEntity::class, CategoryEntity::class], version = DATABASE_VERSION, exportSchema = false)
 abstract class ExpensesDatabase: RoomDatabase() {
     abstract fun expensesListDao(): ExpensesListDao
 

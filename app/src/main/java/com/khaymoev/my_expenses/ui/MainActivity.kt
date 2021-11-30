@@ -9,15 +9,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.NavigationHost
+import com.khaymoev.my_expenses.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity: AppCompatActivity(), NavigationHost {
 
     private val viewModel: MainViewModel by viewModels()
+    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
 
     companion object {
         private val TOP_LEVEL_DESTINATION = setOf(
@@ -42,7 +44,7 @@ class MainActivity: AppCompatActivity(), NavigationHost {
         appConfiguration = AppBarConfiguration(TOP_LEVEL_DESTINATION)
 
         navController?.apply {
-            mainBottomNavView.setupWithNavController(this)
+            binding.mainBottomNavView.setupWithNavController(this)
         }
     }
 

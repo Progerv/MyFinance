@@ -1,13 +1,10 @@
 package com.khaymoev.my_expenses.data.local.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 /**
- * Интерфейс [ExpensesListDao] содержащий функции-запросы к базе данных [ExpensesListEntity]
+ * Интерфейс [ExpensesListDao] содержащий функции-запросы к базе данных [ExpenseEntity]
  */
 @Dao
 interface ExpensesListDao {
@@ -16,46 +13,41 @@ interface ExpensesListDao {
      * Функция для получения из базы данных всего её содержимого, т.е. полного списка затрат
      */
     @Query("SELECT * FROM expenses_list")
-    fun expensesList(): LiveData<List<ExpensesListEntity>>
+    fun expensesList(): LiveData<List<ExpenseEntity>>
 
-//    /**
-//     * Функция для получения из базы данных всего её содержимого, т.е. полного списка категорий затрат
-//     */
-//    @Query("SELECT * FROM categories_list")
-//    fun categoriesList(): LiveData<List<CategoriesListEntity>>
+    /**
+     * Функция для получения из базы данных списка затрат с категориями
+     */
+    @Transaction
+    @Query("SELECT * FROM categories_list")
+    suspend fun getCategoryWithExpenses(): List<CategoryWithExpenses>
 
     /**
      * Функция для получения из базы данных конкретной затраты по id
      */
-    @Query("SELECT * FROM expenses_list WHERE id = :id")
-    fun expenseFromId(id: Long): ExpensesListEntity?
-
-//    /**
-//     * Функция для получения из базы данных конкретной категории затраты по id
-//     */
-//    @Query("SELECT * FROM categories_list WHERE id = :id")
-//    suspend fun categoryFromId(id: Long): CategoriesListEntity?
+    @Query("SELECT * FROM expenses_list WHERE idExpense = :id")
+    fun expenseFromId(id: Long): ExpenseEntity?
 
     /**
      * Записывает данные в базу. Если какой-то объект уже имеется, он перезаписывается.
      *
-     * @param list список объектов [ExpensesListEntity] которые необходимо записать в базу данных
+     * @param list список объектов [ExpenseEntity] которые необходимо записать в базу данных
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertExpenses(list: List<ExpensesListEntity>)
+    suspend fun insertExpenses(list: List<ExpenseEntity>)
 
     /**
      * Записывает данные в базу. Если какой-то объект уже имеется, он перезаписывается.
      *
-     * @param item объект [ExpensesListEntity] который необходимо записать в базу данных
+     * @param item объект [ExpenseEntity] который необходимо записать в базу данных
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertExpense(item: ExpensesListEntity)
+    suspend fun insertExpense(item: ExpenseEntity)
 
     /**
      * Функция для удаления расхода по [id] из таблицы expenses_list из базы данных
      */
-    @Query("DELETE FROM expenses_list WHERE id = :id")
+    @Query("DELETE FROM expenses_list WHERE idExpense = :id")
     suspend fun deleteExpense(id: Long)
 
     /**
@@ -63,16 +55,4 @@ interface ExpensesListDao {
      */
     @Query("DELETE FROM expenses_list")
     suspend fun deleteAll()
-
-//    /**
-//     * Функция для удаления категории по [id] из таблицы categories_list из базы данных
-//     */
-//    @Query("DELETE FROM categories_list WHERE id = :id")
-//    suspend fun deleteCategory(id: Long)
-//
-//    /**
-//     * Функция для удаления всех элементов таблицы categories_list из базы данных
-//     */
-//    @Query("DELETE FROM categories_list")
-//    suspend fun deleteAllCategories()
 }

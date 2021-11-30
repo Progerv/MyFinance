@@ -2,11 +2,10 @@ package com.khaymoev.my_expenses.ui.expenses_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.khaymoev.my_expenses.data.local.database.ExpensesListEntity
-import com.khaymoev.my_expenses.models.Expense
+import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import com.khaymoev.my_expenses.repository.expensesList.ExpensesListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,9 +14,9 @@ import javax.inject.Inject
 class ExpensesListViewModel @Inject constructor(private val repository: ExpensesListRepository): ViewModel() {
 
     /**
-     * [ExpensesListEntity] хранит полный список затрат
+     * [ExpenseEntity] хранит полный список затрат
      */
-    val expensesListEntity: LiveData<List<ExpensesListEntity>> = repository.allExpensesList
+    val expensesListEntity: LiveData<List<ExpenseEntity>> = repository.allExpensesList
 
 
 //    fun addD() {
@@ -29,7 +28,7 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
 //
 //    private suspend fun addFirst() {
 //        repository.insertExpense(
-//            Expense(
+//            ExpenseEntity(
 //                null,
 //                "Первая затрата",
 //                1000F
