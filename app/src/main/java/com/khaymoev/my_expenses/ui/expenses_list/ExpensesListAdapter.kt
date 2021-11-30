@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_expense_list.view.*
 
 /**
  * Интерфейс для получения информации о совершении клика по элементу
- * из списка или по иконке для добавления/удаления в избранное
+ * из списка
  */
 interface OnItemClickCallback {
     /**

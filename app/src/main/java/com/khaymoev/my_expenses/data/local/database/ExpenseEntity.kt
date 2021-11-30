@@ -29,6 +29,6 @@ import androidx.room.PrimaryKey
 data class ExpenseEntity(
     @PrimaryKey(autoGenerate = true) val idExpense: Long,
     val name: String,
-    val idCategory: Int,
+    val idCategory: Long,
     val amount: Float = 0F
 )

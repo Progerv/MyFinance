@@ -10,7 +10,7 @@ import androidx.room.*
 interface ExpensesListDao {
 
     /**
-     * Функция для получения из базы данных всего её содержимого, т.е. полного списка затрат
+     * Функция для получения из базы данных полного списка затрат
      */
     @Query("SELECT * FROM expenses_list")
     fun expensesList(): LiveData<List<ExpenseEntity>>
@@ -23,21 +23,25 @@ interface ExpensesListDao {
     suspend fun getCategoryWithExpenses(): List<CategoryWithExpenses>
 
     /**
+     * Функция для получения из базы данных списка категорий
+     */
+    @Query("SELECT * FROM categories_list")
+    fun categoriesList(): LiveData<List<CategoryEntity>>
+
+    /**
      * Функция для получения из базы данных конкретной затраты по id
      */
     @Query("SELECT * FROM expenses_list WHERE idExpense = :id")
     fun expenseFromId(id: Long): ExpenseEntity?
 
     /**
-     * Записывает данные в базу. Если какой-то объект уже имеется, он перезаписывается.
-     *
-     * @param list список объектов [ExpenseEntity] которые необходимо записать в базу данных
+     * Функция для получения из базы данных конкретной категории по id
      */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertExpenses(list: List<ExpenseEntity>)
+    @Query("SELECT * FROM categories_list WHERE id = :id")
+    fun categoryFromId(id: Long): CategoryEntity?
 
     /**
-     * Записывает данные в базу. Если какой-то объект уже имеется, он перезаписывается.
+     * Записывает данные в базу объект [ExpenseEntity] затрату
      *
      * @param item объект [ExpenseEntity] который необходимо записать в базу данных
      */
@@ -45,14 +49,34 @@ interface ExpensesListDao {
     suspend fun insertExpense(item: ExpenseEntity)
 
     /**
-     * Функция для удаления расхода по [id] из таблицы expenses_list из базы данных
+     * Записывает объект [CategoryEntity] в базу данных.
+     *
+     * @param item объект [CategoryEntity] который необходимо записать в базу данных
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCategory(item: CategoryEntity)
+
+    /**
+     * Функция для удаления затраты по [id] из таблицы expenses_list из базы данных
      */
     @Query("DELETE FROM expenses_list WHERE idExpense = :id")
     suspend fun deleteExpense(id: Long)
 
     /**
-     * Функция для удаления всех элементов из базы данных
+     * Функция для удаления всех элементов из таблицы expenses_list из базы данных
      */
     @Query("DELETE FROM expenses_list")
     suspend fun deleteAll()
+
+    /**
+     * Функция для удаления категории по [id] из таблицы categories_list из базы данных
+     */
+    @Query("DELETE FROM categories_list WHERE id = :id")
+    suspend fun deleteCategory(id: Long)
+
+    /**
+     * Функция для удаления всех элементов из таблицы categories_list
+     */
+    @Query("DELETE FROM categories_list")
+    suspend fun deleteCategoriesAll()
 }

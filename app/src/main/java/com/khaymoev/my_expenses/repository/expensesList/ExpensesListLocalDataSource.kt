@@ -15,19 +15,6 @@ class ExpensesListLocalDataSource @Inject constructor(private val database: Expe
     /**
      * Вставляет данные в базу данных
      *
-     * @param expensesToInsert список объкетов [ExpenseEntity]
-     */
-    suspend fun insertExpensesIntoDatabase(expensesToInsert: List<ExpenseEntity>) {
-        //проверяем список на пустоту
-        if (expensesToInsert.isNotEmpty()) {
-            //если список не пустой вставляем список в базу данных
-            database.expensesListDao().insertExpenses(expensesToInsert)
-        }
-    }
-
-    /**
-     * Вставляет данные в базу данных
-     *
      * @param expense объект [ExpenseEntity]
      */
     suspend fun insertExpenseIntoDatabase(expense: ExpenseEntity) {
