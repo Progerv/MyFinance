@@ -20,7 +20,7 @@ interface ExpensesListDao {
      */
     @Transaction
     @Query("SELECT * FROM categories_list")
-    suspend fun getCategoryWithExpenses(): List<CategoryWithExpenses>
+    fun getCategoryWithExpenses(): LiveData<List<CategoryWithExpenses>>
 
     /**
      * Функция для получения из базы данных списка категорий

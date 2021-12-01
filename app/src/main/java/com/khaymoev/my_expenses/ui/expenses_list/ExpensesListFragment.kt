@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.MainNavigationFragment
+import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import com.khaymoev.my_expenses.databinding.FragmentExpensesListBinding
 import com.khaymoev.my_expenses.utils.doOnChange
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +34,8 @@ class ExpensesListFragment: MainNavigationFragment(), OnItemClickCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //Тестовые данные
+        viewModel.addD()
         initializeViews()
     }
 
@@ -54,8 +56,8 @@ class ExpensesListFragment: MainNavigationFragment(), OnItemClickCallback {
          * Выполняем проверку списка на пустоту, и обновляем
          * значение внутри [ExpensesListViewModel].
          */
-        viewModel.expensesListEntity.doOnChange(this) {
-            expenseListAdapter.updateList(it)
+        viewModel.allCategoriesWithExpenses.doOnChange(this) {
+            expenseListAdapter.updateList(viewModel.withDatabaseTableToListView(it))
         }
     }
 

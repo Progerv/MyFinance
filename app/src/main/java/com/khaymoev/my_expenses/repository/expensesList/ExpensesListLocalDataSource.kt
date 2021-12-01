@@ -1,6 +1,7 @@
 package com.khaymoev.my_expenses.repository.expensesList
 
 import androidx.lifecycle.LiveData
+import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import com.khaymoev.my_expenses.data.local.database.ExpensesDatabase
 import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import javax.inject.Inject
@@ -11,6 +12,11 @@ class ExpensesListLocalDataSource @Inject constructor(private val database: Expe
      * Получение полного списка затрат хранящихся в базе данных
      */
     val allExpensesList: LiveData<List<ExpenseEntity>> = database.expensesListDao().expensesList()
+
+    /**
+     * Получение полного списка затрат хранящихся в базе данных
+     */
+    val allCategoriesWithExpenses: LiveData<List<CategoryWithExpenses>> = database.expensesListDao().getCategoryWithExpenses()
 
     /**
      * Вставляет данные в базу данных

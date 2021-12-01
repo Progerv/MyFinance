@@ -18,6 +18,16 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/categoryItemTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#616161"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/expenseItemTextView"
+            tools:text="Category name" />
+
+        <TextView
             android:id="@+id/expenseItemTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/amountItemTextView"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/categoryItemTextView"
             tools:text="Example name expense" />
 
         <TextView

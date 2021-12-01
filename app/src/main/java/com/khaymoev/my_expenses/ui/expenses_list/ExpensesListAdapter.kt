@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.khaymoev.my_expenses.R
+import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import com.khaymoev.my_expenses.utils.refactorString
 import kotlinx.android.synthetic.main.item_expense_list.view.*
@@ -35,7 +36,7 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback) 
     /**
      * Переменная хранящая список объектов [ExpenseEntity], по умолчанию содержит пустой список
      */
-    private val expensesList: MutableList<ExpenseEntity> = mutableListOf()
+    private val expensesList: MutableList<CategoriesWithExpensesForAdapter> = mutableListOf()
 
     /**
      * Создает новый объет [ExpensesListViewHolder] каждый раз когда RecyclerView в этом нуждается.
@@ -64,17 +65,21 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback) 
      *
      * @param list список объектов [ExpenseEntity]
      */
-    fun updateList(list: List<ExpenseEntity>) {
+    fun updateList(list: List<CategoriesWithExpensesForAdapter>) {
         this.expensesList.clear() //очистка списка криптовалют
         this.expensesList.addAll(list) //заполнение списка новыми данными
         notifyDataSetChanged()  //обновление RecyclerView
     }
 
     class ExpensesListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(model: ExpenseEntity, onItemClickCallback: OnItemClickCallback) {
-
+        fun bind(
+            model: CategoriesWithExpensesForAdapter,
+            onItemClickCallback: OnItemClickCallback
+        ) {
             //устаналвиваем имя затраты
             itemView.expenseItemTextView.text = model.name
+
+            itemView.categoryItemTextView.text = model.nameCategory
 
             //добавляем символ валюты к сумме затраты
             itemView.amountItemTextView.text = model.amount.refactorString()
