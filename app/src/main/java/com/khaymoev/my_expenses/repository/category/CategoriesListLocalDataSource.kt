@@ -13,6 +13,11 @@ class CategoriesListLocalDataSource @Inject constructor(private val database: Ex
      */
     val allCategoriesList: LiveData<List<CategoryEntity>> = database.expensesListDao().categoriesList()
 
+
+    suspend fun getCategoriesListName(): List<CategoryEntity> {
+        return database.expensesListDao().categoriesListName()
+    }
+
     /**
      * Вставляет данные в базу данных
      *

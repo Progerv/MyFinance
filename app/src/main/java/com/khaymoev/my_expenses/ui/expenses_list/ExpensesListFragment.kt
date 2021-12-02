@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khaymoev.my_expenses.R
@@ -37,6 +38,13 @@ class ExpensesListFragment: MainNavigationFragment(), OnItemClickCallback {
         //Тестовые данные
         viewModel.addD()
         initializeViews()
+        initButton()
+    }
+
+    private fun initButton() {
+        binding.addNewExpense.setOnClickListener {
+            findNavController().navigate(ExpensesListFragmentDirections.actionNavigationExpensesListToNavigationExpenseEdit())
+        }
     }
 
     override fun initializeViews() {

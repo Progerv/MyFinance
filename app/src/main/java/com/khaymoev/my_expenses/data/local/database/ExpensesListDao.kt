@@ -29,6 +29,12 @@ interface ExpensesListDao {
     fun categoriesList(): LiveData<List<CategoryEntity>>
 
     /**
+     * Функция для получения из базы данных списка категорий
+     */
+    @Query("SELECT id, name FROM categories_list")
+    suspend fun categoriesListName(): List<CategoryEntity>
+
+    /**
      * Функция для получения из базы данных конкретной затраты по id
      */
     @Query("SELECT * FROM expenses_list WHERE idExpense = :id")

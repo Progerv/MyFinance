@@ -3,4 +3,9 @@
     <string name="list_expenses_menu_bottom">List expenses</string>
     <string name="list_categories_menu_bottom">Categories</string>
     <string name="reports_menu_bottom">Reports</string>
+    <string name="add_new_category_button">Add new category</string>
+    <string name="add_new_expense_button">Add new expense</string>
+    <string name="label_hint_category">Enter name category</string>
+    <string name="label_hint_expense">Enter name expense</string>
+    <string name="label_hint_category_expense">Enter category expense</string>
 </resources>

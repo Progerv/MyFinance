@@ -4,4 +4,9 @@
     <string name="list_expenses_menu_bottom">Список затрат</string>
     <string name="list_categories_menu_bottom">Категории</string>
     <string name="reports_menu_bottom">Отчёты</string>
+    <string name="add_new_category_button">Добавить категорию</string>
+    <string name="add_new_expense_button">Добавить затрату</string>
+    <string name="label_hint_category">Введите имя категории</string>
+    <string name="label_hint_expense">Введите название затраты</string>
+    <string name="label_hint_category_expense">Укажите категорию</string>
 </resources>

@@ -10,18 +10,38 @@
         android:id="@+id/navigation_expenses_list"
         android:name="com.khaymoev.my_expenses.ui.expenses_list.ExpensesListFragment"
         android:label="@string/list_expenses_menu_bottom"
-        tools:layout="@layout/fragment_expenses_list" />
+        tools:layout="@layout/fragment_expenses_list" >
+        <action
+            android:id="@+id/action_navigation_expenses_list_to_navigation_expense_edit"
+            app:destination="@id/navigation_expense_edit" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_categories_list"
         android:name="com.khaymoev.my_expenses.ui.categories_list.CategoriesListFragment"
         android:label="@string/list_categories_menu_bottom"
-        tools:layout="@layout/fragment_categories_list" />
+        tools:layout="@layout/fragment_categories_list" >
+        <action
+            android:id="@+id/action_navigation_categories_list_to_navigation_category_edit"
+            app:destination="@id/navigation_category_edit" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_reports"
         android:name="com.khaymoev.my_expenses.ui.reports.ReportsFragment"
         android:label="@string/reports_menu_bottom"
         tools:layout="@layout/fragment_reports" />
+
+    <dialog
+        android:id="@+id/navigation_category_edit"
+        android:name="com.khaymoev.my_expenses.ui.categories_list.category_edit.CategoryEditBottomFragment"
+        android:label="CategoryEditBottomFragment"
+        tools:layout="@layout/fragment_add_new_category" />
+
+    <dialog
+        android:id="@+id/navigation_expense_edit"
+        android:name="com.khaymoev.my_expenses.ui.expenses_list.expense_edit.ExpenseEditBottomFragment"
+        android:label="ExpenseEditBottomFragment"
+        tools:layout="@layout/fragment_add_new_expense" />
 
 </navigation>

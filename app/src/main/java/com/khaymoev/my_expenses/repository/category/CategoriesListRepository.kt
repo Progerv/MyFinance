@@ -12,6 +12,11 @@ class CategoriesListRepository @Inject constructor(
      */
     val allCategoriesList: LiveData<List<CategoryEntity>> = categoriesListLocalDataSource.allCategoriesList
 
+
+    suspend fun getCategoriesListName(): List<CategoryEntity> {
+        return categoriesListLocalDataSource.getCategoriesListName()
+    }
+
     /**
      * Добавляем категорию в базу данных
      *

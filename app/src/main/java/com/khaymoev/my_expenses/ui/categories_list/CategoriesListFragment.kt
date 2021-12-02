@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khaymoev.my_expenses.R
@@ -36,6 +37,13 @@ class CategoriesListFragment: MainNavigationFragment(), OnItemClickCallback {
         super.onViewCreated(view, savedInstanceState)
         initializeViews()
         viewModel.addFirstCategories()
+        initButton()
+    }
+
+    private fun initButton() {
+        binding.addNewCategory.setOnClickListener {
+            findNavController().navigate(CategoriesListFragmentDirections.actionNavigationCategoriesListToNavigationCategoryEdit())
+        }
     }
 
     override fun initializeViews() {
