@@ -15,20 +15,11 @@ import androidx.room.PrimaryKey
  */
 
 @Entity(tableName = "expenses_list")
-//    ,
-//    foreignKeys = [
-//        ForeignKey(
-//            entity = CategoryEntity::class,
-//            parentColumns = ["id"],
-//            childColumns = ["idCategory"],
-//            onDelete = CASCADE,
-//            onUpdate = CASCADE,
-//            deferred = true
-//        )
-//    ])
 data class ExpenseEntity(
-    @PrimaryKey(autoGenerate = true) val idExpense: Long,
+    @PrimaryKey(autoGenerate = true) val idExpense: Long = 0,
     val name: String,
     val idCategory: Long,
-    val amount: Float = 0F
+    val amount: Float = 0F,
+    val currency: String = "",
+    val amountInUSD: Float = 0F
 )

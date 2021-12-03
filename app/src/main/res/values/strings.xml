@@ -8,4 +8,6 @@
     <string name="label_hint_category">Enter name category</string>
     <string name="label_hint_expense">Enter name expense</string>
     <string name="label_hint_category_expense">Enter category expense</string>
+    <string name="label_hint_amount_expense">Enter amount</string>
+    <string name="label_hint_currency_expense">Currency</string>
 </resources>

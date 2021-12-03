@@ -7,11 +7,6 @@ fun String?.emptyIfNull(): String {
     return this ?: ""
 }
 
-//убираем скобки из строки
-fun String?.trimParanthesis(): String {
-    return this?.replace(Regex("[()]"), "") ?: ""
-}
-
 //добавляет в строку знак доллара
 fun Double?.dollarString(): String {
     return this?.let {

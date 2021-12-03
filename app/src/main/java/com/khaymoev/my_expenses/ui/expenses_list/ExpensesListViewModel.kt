@@ -47,12 +47,12 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
      * @param idCategory идентификатор категории
      * @param amount сумма затрат
      */
-    fun addNewExpense(name: String, idCategory: Long, amount: Float) {
+    fun addNewExpense(id: Long, name: String, idCategory: Long, amount: Float) {
         viewModelScope.launch(Dispatchers.IO)
         {
             repository.insertExpense(
                 ExpenseEntity(
-                    idExpense = 2,
+                    idExpense = id,
                     name = name,
                     idCategory = idCategory,
                     amount = amount
@@ -82,5 +82,4 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
 
         return list
     }
-
 }

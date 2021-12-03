@@ -9,4 +9,6 @@
     <string name="label_hint_category">Введите имя категории</string>
     <string name="label_hint_expense">Введите название затраты</string>
     <string name="label_hint_category_expense">Укажите категорию</string>
+    <string name="label_hint_amount_expense">Сумма затраты</string>
+    <string name="label_hint_currency_expense">Валюта</string>
 </resources>
