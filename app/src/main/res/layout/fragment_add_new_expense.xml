@@ -29,7 +29,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:hint="@string/label_hint_category_expense"
         app:layout_constraintBottom_toTopOf="@id/enterAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +36,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/categoryTextInputEditText"
+            android:hint="@string/label_hint_category_expense"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text" />
@@ -76,7 +76,9 @@
             android:layout_weight="50"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
-            android:hint="@string/label_hint_currency_expense">
+            android:hint="@string/label_hint_currency_expense"
+            app:startIconDrawable="@drawable/ic_money"
+            app:startIconContentDescription="currency">
 
             <AutoCompleteTextView
                 android:id="@+id/currencyTextInputEditText"

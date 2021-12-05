@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -20,12 +21,17 @@ class ExpenseEditBottomFragment() : BottomSheetDialogFragment() {
     private val binding: FragmentAddNewExpenseBinding by viewBinding(FragmentAddNewExpenseBinding::bind)
     private val viewModel: ExpenseEditViewModel by viewModels()
 
+    private lateinit var listCurrency: List<String>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel.setListCategories()
+
+        listCurrency = listOf("USD", "RUB", "EUR")
+
         return inflater.inflate(R.layout.fragment_add_new_expense, container, false)
     }
 
@@ -34,11 +40,14 @@ class ExpenseEditBottomFragment() : BottomSheetDialogFragment() {
 
         initButton()
 
-        initSpinner(listOf())
+        initSpinnerCategories(listOf())
+        initSpinnerCurrencies(listOf())
 
         fragmentTextUpdateObserver()
 
         viewModel.getUpdatedText()
+
+        initSpinnerCurrencies(listCurrency)
     }
 
     private fun initButton() {
@@ -46,20 +55,27 @@ class ExpenseEditBottomFragment() : BottomSheetDialogFragment() {
             viewModel.addExpense(
                 name = binding.textExpenseInputEditText.text.toString(),
                 amount = binding.textAmountInputEditText.text.toString().toFloat(),
-                nameCategory = binding.categoryTextInputEditText.text.toString()
+                nameCategory = binding.categoryTextInputEditText.text.toString(),
+                currency = binding.currencyTextInputEditText.text.toString()
             )
         }
     }
 
-    private fun initSpinner(items: List<String>) {
+    private fun initSpinnerCategories(items: List<String>) {
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
         (binding.categoryExpenseEditText.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+    }
+
+    private fun initSpinnerCurrencies(items: List<String>) {
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
+        (binding.currencyInputEditText.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        (binding.currencyInputEditText.editText as? AutoCompleteTextView)?.threshold = 1
     }
 
     // Observer is waiting for viewModel to update our UI
     private fun fragmentTextUpdateObserver() {
         viewModel.uiTextLiveData.observe(viewLifecycleOwner, Observer { updatedText ->
-            initSpinner(updatedText)
+            initSpinnerCategories(updatedText)
         })
     }
 }

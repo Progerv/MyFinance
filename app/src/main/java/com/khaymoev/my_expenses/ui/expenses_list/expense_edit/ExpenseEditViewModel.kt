@@ -11,6 +11,7 @@ import com.khaymoev.my_expenses.repository.expensesList.ExpensesListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,7 +23,7 @@ class ExpenseEditViewModel @Inject constructor(private val repository: Categorie
      */
     val allCategoriesList: LiveData<List<CategoryEntity>> = repository.allCategoriesList
 
-    var categoryList: List<CategoryEntity>? = null
+    private var categoryList: List<CategoryEntity>? = null
     // Create the model which contains data for our UI
     private var model: List<String> = listOf()
 
@@ -59,14 +60,15 @@ class ExpenseEditViewModel @Inject constructor(private val repository: Categorie
         }
     }
 
-    fun addExpense(name: String, idCategory: Long = 1, nameCategory: String = "", amount: Float) {
+    fun addExpense(name: String, idCategory: Long = 1, nameCategory: String = "", amount: Float, currency: String) {
         viewModelScope.launch(Dispatchers.IO)
         {
             repositoryExpenses.insertExpense(
                 ExpenseEntity(
                     name = name,
                     idCategory = categoryList!!.first { it.name == nameCategory }.id,
-                    amount = amount
+                    amount = amount,
+                    currency = currency
                 )
             )
 
