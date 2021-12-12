@@ -12,8 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoriesListViewModel @Inject constructor(private val repository: CategoriesListRepository,
-                                                  private val repositoryCurrency: CurrencyListRepository
+class CategoriesListViewModel @Inject constructor(private val repository: CategoriesListRepository
 ) :
     ViewModel() {
 
@@ -42,11 +41,5 @@ class CategoriesListViewModel @Inject constructor(private val repository: Catego
                 name = "Квартплата"
             )
         )
-    }
-
-    fun loadCurrencyFromApi() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repositoryCurrency.currencyList()
-        }
     }
 }

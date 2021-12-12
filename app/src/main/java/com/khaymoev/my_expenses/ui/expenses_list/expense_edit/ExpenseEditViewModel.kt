@@ -11,6 +11,7 @@ import com.khaymoev.my_expenses.repository.expensesList.ExpensesListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.OffsetDateTime
 import java.util.*
 import javax.inject.Inject
 
@@ -54,7 +55,8 @@ class ExpenseEditViewModel @Inject constructor(private val repository: Categorie
                     idExpense = id,
                     name = name,
                     idCategory = idCategory,
-                    amount = amount
+                    amount = amount,
+                    dateExpense = Date()
                 )
             )
         }
@@ -68,7 +70,8 @@ class ExpenseEditViewModel @Inject constructor(private val repository: Categorie
                     name = name,
                     idCategory = categoryList!!.first { it.name == nameCategory }.id,
                     amount = amount,
-                    currency = currency
+                    currency = currency,
+                    dateExpense = Date()
                 )
             )
 

@@ -48,6 +48,8 @@ class MainActivity: AppCompatActivity(), NavigationHost {
         navController?.apply {
             binding.mainBottomNavView.setupWithNavController(this)
         }
+
+        viewModel.loadCurrencyFromApi()
     }
 
     /**

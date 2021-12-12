@@ -4,17 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room.TypeConverters
 import com.khaymoev.my_expenses.utils.Constants.DATABASE_NAME
 import com.khaymoev.my_expenses.utils.Constants.DATABASE_VERSION
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * Класс [ExpensesDatabase] управляет базой данных Room внутри приложения
  */
 @Database(entities = [ExpenseEntity::class, CategoryEntity::class, CurrencyEntity::class], version = DATABASE_VERSION, exportSchema = false)
+@TypeConverters(DateConverter::class)
 abstract class ExpensesDatabase: RoomDatabase() {
     abstract fun expensesListDao(): ExpensesListDao
 

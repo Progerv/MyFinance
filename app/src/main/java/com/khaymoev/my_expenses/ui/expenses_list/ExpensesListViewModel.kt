@@ -2,14 +2,14 @@ package com.khaymoev.my_expenses.ui.expenses_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import com.khaymoev.my_expenses.repository.expensesList.ExpensesListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import androidx.lifecycle.viewModelScope
-import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,7 +36,8 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
                 idExpense = 1,
                 name = "Купил хлебушек",
                 idCategory = 1,
-                amount = 100F
+                amount = 100F,
+                dateExpense = Date()
             )
         )
     }
@@ -55,7 +56,8 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
                     idExpense = id,
                     name = name,
                     idCategory = idCategory,
-                    amount = amount
+                    amount = amount,
+                    dateExpense = Date()
                 )
             )
         }

@@ -1,9 +1,9 @@
 package com.khaymoev.my_expenses.data.local.database
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import java.util.*
 
 /**
  * Класс описывающий сущность хранящихся в [ExpensesDatabase] элементов
@@ -21,5 +21,7 @@ data class ExpenseEntity(
     val idCategory: Long,
     val amount: Float = 0F,
     val currency: String = "",
-    val amountInUSD: Float = 0F
+    val amountInRUB: Float = 0F,
+    @TypeConverters(DateConverter::class)
+    val dateExpense: Date
 )

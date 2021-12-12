@@ -1,6 +1,5 @@
 package com.khaymoev.my_expenses.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khaymoev.my_expenses.repository.currency.CurrencyListRepository
@@ -14,5 +13,12 @@ import javax.inject.Inject
  * создаем для целостности приложения с точки зрения подхода
  */
 @HiltViewModel
-class MainViewModel @Inject constructor() :
-    ViewModel()
+class MainViewModel @Inject constructor(private val repositoryCurrency: CurrencyListRepository) :
+    ViewModel() {
+
+    fun loadCurrencyFromApi() {
+        viewModelScope.launch(Dispatchers.IO) {
+            ///repositoryCurrency.currencyList()  TODO
+        }
+    }
+}
