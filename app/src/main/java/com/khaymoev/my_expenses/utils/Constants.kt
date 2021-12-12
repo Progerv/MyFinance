@@ -6,5 +6,5 @@ object Constants {
     const val DATABASE_NAME = "ExpensesDatabase"
     const val DATABASE_VERSION = 1
 
-    const val BASE_URL = "https://api.coingecko.com/api/v3/"
+    const val BASE_URL = "https://v6.exchangerate-api.com/"
 }

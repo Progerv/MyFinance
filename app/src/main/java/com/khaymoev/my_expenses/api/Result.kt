@@ -1,4 +1,4 @@
-package com.khaymoev.my_expenses.common
+package com.khaymoev.my_expenses.api
 
 /**
  * [Result] вспомагательный класс в который оборачивается ответ от сервера

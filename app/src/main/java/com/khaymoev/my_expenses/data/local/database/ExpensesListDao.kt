@@ -15,6 +15,26 @@ interface ExpensesListDao {
     @Query("SELECT * FROM expenses_list")
     fun expensesList(): LiveData<List<ExpenseEntity>>
 
+//    /**
+//     * Функция для получения из базы данных список валют
+//     */
+//    @Query("SELECT * FROM conversion_rates")
+//    suspend fun currencyList(): LiveData<List<CurrencyEntity>>
+//
+//    /**
+//     * Функция для получения из базы данных валюту и коэфициент пересчета
+//     */
+//    @Query("SELECT * FROM conversion_rates WHERE currencyName = :currencyName")
+//    suspend fun currencyFromId(currencyName: String): CurrencyEntity?
+
+    /**
+     * Записывает объект [CurrencyEntity] в базу данных.
+     *
+     * @param item объект [CurrencyEntity] который необходимо записать в базу данных
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCurrency(item: CurrencyEntity)
+
     /**
      * Функция для получения из базы данных списка затрат с категориями
      */

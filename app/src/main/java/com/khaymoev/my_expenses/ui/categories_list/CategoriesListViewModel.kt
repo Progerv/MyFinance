@@ -5,13 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khaymoev.my_expenses.data.local.database.CategoryEntity
 import com.khaymoev.my_expenses.repository.category.CategoriesListRepository
+import com.khaymoev.my_expenses.repository.currency.CurrencyListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoriesListViewModel @Inject constructor(private val repository: CategoriesListRepository) :
+class CategoriesListViewModel @Inject constructor(private val repository: CategoriesListRepository,
+                                                  private val repositoryCurrency: CurrencyListRepository
+) :
     ViewModel() {
 
     /**
@@ -39,5 +42,11 @@ class CategoriesListViewModel @Inject constructor(private val repository: Catego
                 name = "Квартплата"
             )
         )
+    }
+
+    fun loadCurrencyFromApi() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryCurrency.currencyList()
+        }
     }
 }

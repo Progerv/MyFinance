@@ -36,7 +36,7 @@ class SharedPreferencesStorage @Inject constructor(context: Context): Preference
         context.applicationContext.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
 
-    override var currencyDefault by StringPreference(preferences, PREFERENCES_CURRENCY, "USD")
+    override var currencyDefault by StringPreference(preferences, PREFERENCES_CURRENCY, "RUB")
 }
 
 /**

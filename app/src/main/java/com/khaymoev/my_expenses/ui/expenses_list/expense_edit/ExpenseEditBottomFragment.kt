@@ -64,12 +64,13 @@ class ExpenseEditBottomFragment() : BottomSheetDialogFragment() {
     private fun initSpinnerCategories(items: List<String>) {
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
         (binding.categoryExpenseEditText.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        //binding.categoryTextInputEditText.setText(items[0], false)
     }
 
     private fun initSpinnerCurrencies(items: List<String>) {
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
         (binding.currencyInputEditText.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-        (binding.currencyInputEditText.editText as? AutoCompleteTextView)?.threshold = 1
+        //binding.currencyTextInputEditText.setText(items[0], false)
     }
 
     // Observer is waiting for viewModel to update our UI

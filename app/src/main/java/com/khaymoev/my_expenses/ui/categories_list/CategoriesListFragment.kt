@@ -41,9 +41,10 @@ class CategoriesListFragment: MainNavigationFragment(), OnItemClickCallback {
     }
 
     private fun initButton() {
-        binding.addNewCategory.setOnClickListener {
-            findNavController().navigate(CategoriesListFragmentDirections.actionNavigationCategoriesListToNavigationCategoryEdit())
-        }
+//        binding.addNewCategory.setOnClickListener {
+//            findNavController().navigate(CategoriesListFragmentDirections.actionNavigationCategoriesListToNavigationCategoryEdit())
+//        }
+        viewModel.loadCurrencyFromApi()
     }
 
     override fun initializeViews() {

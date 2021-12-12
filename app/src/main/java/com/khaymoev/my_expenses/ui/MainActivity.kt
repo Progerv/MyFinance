@@ -1,6 +1,7 @@
 package com.khaymoev.my_expenses.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -14,6 +15,7 @@ import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.NavigationHost
 import com.khaymoev.my_expenses.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity: AppCompatActivity(), NavigationHost {

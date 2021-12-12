@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 /**
  * Класс [ExpensesDatabase] управляет базой данных Room внутри приложения
  */
-@Database(entities = [ExpenseEntity::class, CategoryEntity::class], version = DATABASE_VERSION, exportSchema = false)
+@Database(entities = [ExpenseEntity::class, CategoryEntity::class, CurrencyEntity::class], version = DATABASE_VERSION, exportSchema = false)
 abstract class ExpensesDatabase: RoomDatabase() {
     abstract fun expensesListDao(): ExpensesListDao
 
