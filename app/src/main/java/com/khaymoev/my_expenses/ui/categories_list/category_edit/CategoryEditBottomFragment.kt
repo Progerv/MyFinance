@@ -36,6 +36,7 @@ class CategoryEditBottomFragment(): BottomSheetDialogFragment() {
             viewModel.addNewCategory(
                 binding.categoryItemTextView.text.toString()
             )
+            fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
     }
 }

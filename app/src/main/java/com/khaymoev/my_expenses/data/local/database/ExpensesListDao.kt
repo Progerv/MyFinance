@@ -2,6 +2,9 @@ package com.khaymoev.my_expenses.data.local.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CurrencyEntity
+import com.khaymoev.my_expenses.data.local.database.entities.ExpenseEntity
 
 /**
  * Интерфейс [ExpensesListDao] содержащий функции-запросы к базе данных [ExpenseEntity]
@@ -15,11 +18,11 @@ interface ExpensesListDao {
     @Query("SELECT * FROM expenses_list")
     fun expensesList(): LiveData<List<ExpenseEntity>>
 
-//    /**
-//     * Функция для получения из базы данных список валют
-//     */
-//    @Query("SELECT * FROM conversion_rates")
-//    suspend fun currencyList(): LiveData<List<CurrencyEntity>>
+    /**
+     * Функция для получения из базы данных список валют
+     */
+    @Query("SELECT * FROM conversion_rates")
+    suspend fun currencyList(): List<CurrencyEntity>
 //
 //    /**
 //     * Функция для получения из базы данных валюту и коэфициент пересчета
@@ -41,6 +44,10 @@ interface ExpensesListDao {
     @Transaction
     @Query("SELECT * FROM categories_list")
     fun getCategoryWithExpenses(): LiveData<List<CategoryWithExpenses>>
+
+    @Transaction
+    @Query("SELECT * FROM categories_list")
+    suspend fun getStatistic(): List<CategoryWithExpenses>
 
     /**
      * Функция для получения из базы данных списка категорий

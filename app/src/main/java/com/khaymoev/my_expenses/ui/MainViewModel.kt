@@ -18,7 +18,7 @@ class MainViewModel @Inject constructor(private val repositoryCurrency: Currency
 
     fun loadCurrencyFromApi() {
         viewModelScope.launch(Dispatchers.IO) {
-            ///repositoryCurrency.currencyList()  TODO
+            repositoryCurrency.currencyListUpdate()
         }
     }
 }

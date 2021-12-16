@@ -1,12 +1,11 @@
-package com.khaymoev.my_expenses.ui.expenses_list
+package com.khaymoev.my_expenses.ui.expenses_list.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.khaymoev.my_expenses.R
-import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
-import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
+import com.khaymoev.my_expenses.data.local.database.entities.ExpenseEntity
 import com.khaymoev.my_expenses.utils.refactorString
 import kotlinx.android.synthetic.main.item_expense_list.view.*
 
@@ -82,7 +81,7 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback) 
             itemView.categoryItemTextView.text = model.nameCategory
 
             //добавляем символ валюты к сумме затраты
-            itemView.amountItemTextView.text = model.amount.refactorString()
+            itemView.amountItemTextView.text = "${model.amount.refactorString()} ${model.currency}"
 
             //обрабатываем клик по элементу списка
             itemView.setOnClickListener {

@@ -3,9 +3,8 @@ package com.khaymoev.my_expenses.ui.categories_list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.khaymoev.my_expenses.data.local.database.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
 import com.khaymoev.my_expenses.repository.category.CategoriesListRepository
-import com.khaymoev.my_expenses.repository.currency.CurrencyListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

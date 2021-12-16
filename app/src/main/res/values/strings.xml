@@ -10,4 +10,8 @@
     <string name="label_hint_category_expense">Enter category expense</string>
     <string name="label_hint_amount_expense">Enter amount</string>
     <string name="label_hint_currency_expense">Currency</string>
+    <string name="select_period">Select period:</string>
+    <string name="data_from_statistic">data from</string>
+    <string name="data_to_statistic">data to</string>
+    <string name="statistic_operations">operations</string>
 </resources>

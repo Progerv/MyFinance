@@ -1,7 +1,7 @@
 package com.khaymoev.my_expenses.repository.category
 
 import androidx.lifecycle.LiveData
-import com.khaymoev.my_expenses.data.local.database.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
 import javax.inject.Inject
 
 class CategoriesListRepository @Inject constructor(

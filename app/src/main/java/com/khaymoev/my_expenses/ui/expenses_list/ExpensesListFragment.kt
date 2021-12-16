@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.MainNavigationFragment
-import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import com.khaymoev.my_expenses.databinding.FragmentExpensesListBinding
+import com.khaymoev.my_expenses.ui.expenses_list.adapter.ExpensesListAdapter
+import com.khaymoev.my_expenses.ui.expenses_list.adapter.OnItemClickCallback
 import com.khaymoev.my_expenses.utils.doOnChange
 import dagger.hilt.android.AndroidEntryPoint
 

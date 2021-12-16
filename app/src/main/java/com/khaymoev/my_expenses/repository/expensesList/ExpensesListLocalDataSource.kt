@@ -3,7 +3,7 @@ package com.khaymoev.my_expenses.repository.expensesList
 import androidx.lifecycle.LiveData
 import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
 import com.khaymoev.my_expenses.data.local.database.ExpensesDatabase
-import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
+import com.khaymoev.my_expenses.data.local.database.entities.ExpenseEntity
 import javax.inject.Inject
 
 class ExpensesListLocalDataSource @Inject constructor(private val database: ExpensesDatabase) {
@@ -17,6 +17,10 @@ class ExpensesListLocalDataSource @Inject constructor(private val database: Expe
      * Получение полного списка затрат хранящихся в базе данных
      */
     val allCategoriesWithExpenses: LiveData<List<CategoryWithExpenses>> = database.expensesListDao().getCategoryWithExpenses()
+
+    suspend fun getStatistic(): List<CategoryWithExpenses> {
+        return database.expensesListDao().getStatistic()
+    }
 
     /**
      * Вставляет данные в базу данных

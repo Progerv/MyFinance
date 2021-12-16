@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khaymoev.my_expenses.data.local.database.CategoryWithExpenses
-import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
+import com.khaymoev.my_expenses.data.local.database.entities.ExpenseEntity
 import com.khaymoev.my_expenses.repository.expensesList.ExpensesListRepository
+import com.khaymoev.my_expenses.ui.expenses_list.adapter.CategoriesWithExpensesForAdapter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,8 +19,6 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
     /**
      * [ExpenseEntity] хранит полный список затрат
      */
-
-    val expensesListEntity: LiveData<List<ExpenseEntity>> = repository.allExpensesList
 
     val allCategoriesWithExpenses: LiveData<List<CategoryWithExpenses>> = repository.allCategoriesWithExpenses
 
@@ -37,30 +36,11 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
                 name = "Купил хлебушек",
                 idCategory = 1,
                 amount = 100F,
-                dateExpense = Date()
+                dateExpense = Date(),
+                currency = "RUB",
+                amountInRUB = 100F
             )
         )
-    }
-
-    /**
-     * Добавление новой затраты
-     * @param name наименование затраты
-     * @param idCategory идентификатор категории
-     * @param amount сумма затрат
-     */
-    fun addNewExpense(id: Long, name: String, idCategory: Long, amount: Float) {
-        viewModelScope.launch(Dispatchers.IO)
-        {
-            repository.insertExpense(
-                ExpenseEntity(
-                    idExpense = id,
-                    name = name,
-                    idCategory = idCategory,
-                    amount = amount,
-                    dateExpense = Date()
-                )
-            )
-        }
     }
 
     fun withDatabaseTableToListView(listDatabase: List<CategoryWithExpenses>): List<CategoriesWithExpensesForAdapter> {
@@ -76,7 +56,8 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
                         idExpense = expenseEntity.idExpense,
                         name = expenseEntity.name,
                         nameCategory = categoryWithExpenses.category.name,
-                        amount = expenseEntity.amount
+                        amount = expenseEntity.amount,
+                        currency = expenseEntity.currency
                     )
                 )
             }

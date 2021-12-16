@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.khaymoev.my_expenses.R
-import com.khaymoev.my_expenses.data.local.database.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
 import kotlinx.android.synthetic.main.item_category_list.view.*
 
 /**

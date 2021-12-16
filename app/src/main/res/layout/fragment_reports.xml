@@ -14,13 +14,69 @@
         app:layout_constraintEnd_toEndOf="parent"
         style="@style/Widget.Custom.Toolbar" />
 
-    <ListView
-        android:id="@+id/statistic"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearDates"
+        android:layout_margin="5dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/statistic"
+        android:background="@drawable/custom_border">
+
+        <TextView
+            android:text="@string/select_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/dateFromView"
+            android:hint="@string/data_from_statistic"
+            android:layout_marginStart="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="120dp"
+            tools:text="01-05-2021" />
+
+        <TextView
+            android:id="@+id/dateToView"
+            android:hint="@string/data_to_statistic"
+            android:layout_marginStart="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="120dp"
+            tools:text="31-05-2021"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/statistic"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearDates"
+        app:layout_constraintBottom_toTopOf="@id/pie_chart_diagram"
         tools:listitem="@layout/item_statistic" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart_diagram"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statistic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.github.mikephil.charting.charts.PieChart>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

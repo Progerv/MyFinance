@@ -11,4 +11,8 @@
     <string name="label_hint_category_expense">Укажите категорию</string>
     <string name="label_hint_amount_expense">Сумма затраты</string>
     <string name="label_hint_currency_expense">Валюта</string>
+    <string name="select_period">Выбор периода:</string>
+    <string name="data_from_statistic">дата от</string>
+    <string name="data_to_statistic">дата до</string>
+    <string name="statistic_operations">операции</string>
 </resources>

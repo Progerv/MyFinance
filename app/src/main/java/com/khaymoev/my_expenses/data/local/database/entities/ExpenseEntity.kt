@@ -1,8 +1,9 @@
-package com.khaymoev.my_expenses.data.local.database
+package com.khaymoev.my_expenses.data.local.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.khaymoev.my_expenses.data.local.database.DateConverter
 import java.util.*
 
 /**

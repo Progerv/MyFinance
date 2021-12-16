@@ -2,7 +2,7 @@ package com.khaymoev.my_expenses.ui.categories_list.category_edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.khaymoev.my_expenses.data.local.database.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
 import com.khaymoev.my_expenses.repository.category.CategoriesListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.khaymoev.my_expenses.ui.reports
+package com.khaymoev.my_expenses.ui.reports.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.khaymoev.my_expenses.App
 import com.khaymoev.my_expenses.R
+import com.khaymoev.my_expenses.utils.refactorString
 
 class StatisticAdapter(items: ArrayList<Statistic>, ctx: Context) :
     ArrayAdapter<Statistic>(ctx, R.layout.item_statistic, items) {
 
-    //view holder is used to prevent findViewById calls
     private class AttractionItemViewHolder {
         var category: TextView? = null
         var expenseAmount: TextView? = null
+        var operationCount: TextView? = null
     }
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
@@ -30,6 +32,7 @@ class StatisticAdapter(items: ArrayList<Statistic>, ctx: Context) :
             viewHolder = AttractionItemViewHolder()
             viewHolder.category = view!!.findViewById<View>(R.id.category) as TextView
             viewHolder.expenseAmount = view.findViewById<View>(R.id.expenseAmount) as TextView
+            viewHolder.operationCount = view.findViewById<View>(R.id.operationCount) as TextView
 
         } else {
             viewHolder = view.tag as AttractionItemViewHolder
@@ -37,7 +40,10 @@ class StatisticAdapter(items: ArrayList<Statistic>, ctx: Context) :
 
         val attraction = getItem(i)
         viewHolder.category!!.text = attraction!!.category
-        viewHolder.expenseAmount!!.text = attraction.expenseAmount.toString()
+        (attraction.expenseAmount.refactorString() + " RUB").also {
+            viewHolder.expenseAmount!!.text = it
+        }
+        (attraction.operationCount.toString() + " " + context.resources.getString(R.string.statistic_operations)).also { viewHolder.operationCount!!.text = it }
 
         viewHolder.category!!.setOnClickListener {
             Toast.makeText(context, "Clicked category of " + attraction.category,

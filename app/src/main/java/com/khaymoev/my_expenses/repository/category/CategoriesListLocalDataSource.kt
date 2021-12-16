@@ -1,9 +1,8 @@
 package com.khaymoev.my_expenses.repository.category
 
 import androidx.lifecycle.LiveData
-import com.khaymoev.my_expenses.data.local.database.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
 import com.khaymoev.my_expenses.data.local.database.ExpensesDatabase
-import com.khaymoev.my_expenses.data.local.database.ExpenseEntity
 import javax.inject.Inject
 
 class CategoriesListLocalDataSource @Inject constructor(private val database: ExpensesDatabase) {

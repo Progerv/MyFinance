@@ -5,6 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
+import com.khaymoev.my_expenses.data.local.database.entities.CurrencyEntity
+import com.khaymoev.my_expenses.data.local.database.entities.ExpenseEntity
 import com.khaymoev.my_expenses.utils.Constants.DATABASE_NAME
 import com.khaymoev.my_expenses.utils.Constants.DATABASE_VERSION
 import kotlinx.coroutines.CoroutineScope
