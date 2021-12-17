@@ -13,12 +13,13 @@ import javax.inject.Inject
 class CategoryEditViewModel @Inject constructor(private val repository: CategoriesListRepository) :
     ViewModel() {
 
-    fun addNewCategory(name: String) {
+    fun addNewCategory(name: String, color: String = "#cadaba") {
         viewModelScope.launch(Dispatchers.IO)
         {
             repository.insertCategory(
                 CategoryEntity(
-                    name = name
+                    name = name,
+                    colorCategory = color
                 )
             )
         }

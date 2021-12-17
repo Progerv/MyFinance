@@ -1,6 +1,7 @@
 package com.khaymoev.my_expenses.ui.reports.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,9 @@ class StatisticAdapter(items: ArrayList<Statistic>, ctx: Context) :
         }
 
         view.tag = viewHolder
+
+        view.setBackgroundColor(
+            Color.parseColor(attraction.color))
 
         return view
     }

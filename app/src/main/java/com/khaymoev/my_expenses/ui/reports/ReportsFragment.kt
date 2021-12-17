@@ -81,22 +81,25 @@ class ReportsFragment : MainNavigationFragment() {
     }
 
     private fun loadPieChartData(prodsList: ArrayList<Statistic>) {
-        //var dataPieChart: ArrayList<Statistic> = arrayListOf()
-        var dataPieChart: MutableList<PieEntry> = arrayListOf()
+
+        val dataEntries = ArrayList<PieEntry>()
+        val colors: ArrayList<Int> = ArrayList()
+
         prodsList.forEach {
-            dataPieChart.add(
+            dataEntries.add(
                 PieEntry(
                     it.expenseAmount.toFloat()
                 )
             )
+            colors.add(Color.parseColor(it.color))
         }
 
-        val colors = arrayListOf<Int>()
-        colors.add(R.color.green)
-        colors.add(R.color.red)
-        colors.add(R.color.teal_200)
 
-        val dataSet = PieDataSet(dataPieChart, "Статистика затрат")
+//        colors.add(Color.parseColor("#4DD0E1"))
+//        colors.add(Color.parseColor("#FFF176"))
+//        colors.add(Color.parseColor("#FF8A65"))
+
+        val dataSet = PieDataSet(dataEntries, "")
         dataSet.colors = colors
 
         val data = PieData(dataSet)

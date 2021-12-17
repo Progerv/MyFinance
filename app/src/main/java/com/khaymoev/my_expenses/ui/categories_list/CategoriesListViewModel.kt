@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoriesListViewModel @Inject constructor(private val repository: CategoriesListRepository
+class CategoriesListViewModel @Inject constructor(
+    private val repository: CategoriesListRepository
 ) :
     ViewModel() {
 
@@ -23,22 +24,20 @@ class CategoriesListViewModel @Inject constructor(private val repository: Catego
     fun addFirstCategories() {
         viewModelScope.launch(Dispatchers.IO)
         {
-            addFirst()
+            repository.insertCategory(
+                CategoryEntity(
+                    id = 1,
+                    name = "Продукты",
+                    colorCategory = "#99ff99"
+                )
+            )
+            repository.insertCategory(
+                CategoryEntity(
+                    id = 2,
+                    name = "Квартплата",
+                    colorCategory = "#ffff66"
+                )
+            )
         }
-    }
-
-    private suspend fun addFirst() {
-        repository.insertCategory(
-            CategoryEntity(
-                id = 1,
-                name = "Продукты"
-            )
-        )
-        repository.insertCategory(
-            CategoryEntity(
-                id = 2,
-                name = "Квартплата"
-            )
-        )
     }
 }

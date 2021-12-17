@@ -27,7 +27,8 @@ class ReportsViewModel @Inject constructor(val repository: ExpensesListRepositor
                             Statistic(
                                 category = categoryWithExpenses.category.name,
                                 expenseAmount = expenseEntity.amountInRUB.toDouble(),
-                                1
+                                1,
+                                color = categoryWithExpenses.category.colorCategory ?: "#ffffff"
                             )
                         )
                     } else {

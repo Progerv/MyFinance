@@ -10,6 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.databinding.FragmentAddNewCategoryBinding
 import dagger.hilt.android.AndroidEntryPoint
+import yuku.ambilwarna.AmbilWarnaDialog
 
 @AndroidEntryPoint
 class CategoryEditBottomFragment(): BottomSheetDialogFragment() {
@@ -35,8 +36,12 @@ class CategoryEditBottomFragment(): BottomSheetDialogFragment() {
         binding.addNewCategoryButton.setOnClickListener {
             viewModel.addNewCategory(
                 binding.categoryItemTextView.text.toString()
+                //TODO Добавление цвета
             )
             fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
+
+
+
     }
 }
