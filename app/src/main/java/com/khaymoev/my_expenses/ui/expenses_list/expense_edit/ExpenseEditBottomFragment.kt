@@ -74,7 +74,6 @@ class ExpenseEditBottomFragment() : BottomSheetDialogFragment() {
             binding.currencyTextInputEditText.setText(items[0], false)
     }
 
-    // Observer is waiting for viewModel to update our UI
     private fun fragmentTextUpdateObserver() {
         viewModel.uiTextLiveData.observe(viewLifecycleOwner, Observer { updatedText ->
             initSpinnerCategories(updatedText)

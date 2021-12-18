@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class CategoryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
+    //format color - HEX, example #008000 - green color
     val colorCategory: String?
 )

@@ -11,8 +11,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -28,14 +26,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
 
-    private val applicationScope = CoroutineScope(SupervisorJob())
     /**
      * Функция предоставляющая зависимость от [ExpensesDatabase]
      */
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): ExpensesDatabase {
-        return ExpensesDatabase.buildDatabase(context, applicationScope)
+        return ExpensesDatabase.buildDatabase(context)
     }
 
     /**

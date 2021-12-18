@@ -60,7 +60,6 @@ class ReportsFragment : MainNavigationFragment() {
         initStatisticList(arrayListOf<Statistic>())
         loadPieChartData(arrayListOf())
         initButton()
-        //binding.pieChartDiagram
     }
 
     private fun setupPieChart() {
@@ -94,11 +93,6 @@ class ReportsFragment : MainNavigationFragment() {
             colors.add(Color.parseColor(it.color))
         }
 
-
-//        colors.add(Color.parseColor("#4DD0E1"))
-//        colors.add(Color.parseColor("#FFF176"))
-//        colors.add(Color.parseColor("#FF8A65"))
-
         val dataSet = PieDataSet(dataEntries, "")
         dataSet.colors = colors
 
@@ -125,7 +119,6 @@ class ReportsFragment : MainNavigationFragment() {
             val datePickerFragment = DatePickerFragment()
             val supportFragmentManager = requireActivity().supportFragmentManager
 
-            // we have to implement setFragmentResultListener
             supportFragmentManager.setFragmentResultListener(
                 "REQUEST_KEY",
                 viewLifecycleOwner

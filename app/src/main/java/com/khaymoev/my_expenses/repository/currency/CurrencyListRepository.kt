@@ -14,7 +14,7 @@ class CurrencyListRepository @Inject constructor(
 ) {
 
     suspend fun currencyListUpdate(): String {
-        //Запрашиваем данные у удаленного источника данных и выполняем проверку результата
+
         when (val result =
             currencyListRemoteDataSource.currencyList(sharedPreferencesStorage.currencyDefault)) {
             is Result.Success -> {

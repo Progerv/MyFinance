@@ -7,7 +7,7 @@ import com.khaymoev.my_expenses.data.local.database.DateConverter
 import java.util.*
 
 /**
- * Класс описывающий сущность хранящихся в [ExpensesDatabase] элементов
+ * Класс описывающий сущность хранящихся в [ExpenseEntity] элементов
  *
  * @param idExpense идентификатор расхода
  * @param name имя расхода

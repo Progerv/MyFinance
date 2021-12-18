@@ -15,4 +15,5 @@
     <string name="data_from_statistic">дата от</string>
     <string name="data_to_statistic">дата до</string>
     <string name="statistic_operations">операции</string>
+    <string name="choose_color_add_category">выбрать цвет</string>
 </resources>

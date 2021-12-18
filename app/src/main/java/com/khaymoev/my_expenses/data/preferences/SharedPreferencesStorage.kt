@@ -27,11 +27,6 @@ class SharedPreferencesStorage @Inject constructor(context: Context): Preference
         const val PREFERENCES_CURRENCY = "PREFS_DATA_CURRENCY"
     }
 
-    /**
-     * Создание объекта SharedPreferences при первом использовании,
-     * в дальнейшем будет использоваться ранее созданный объект
-     */
-
     private val preferences: Lazy<SharedPreferences> = lazy {
         context.applicationContext.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
@@ -39,13 +34,6 @@ class SharedPreferencesStorage @Inject constructor(context: Context): Preference
     override var currencyDefault by StringPreference(preferences, PREFERENCES_CURRENCY, "RUB")
 }
 
-/**
- * Интерфейс [StringPreference] позволяет управлять (читать/записывать) данными типа String внутри SharedPreferences
- *
- * @param preference объект SharedPreferences
- * @param name ключ хранящегося в SharedPreferences значения
- * @param defaultValue значение по умолчанию, которое вернется в случает отсутствия данных
- */
 class StringPreference(
     private val preference: Lazy<SharedPreferences>,
     private val name: String,

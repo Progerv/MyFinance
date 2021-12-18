@@ -6,7 +6,8 @@ import com.khaymoev.my_expenses.api.Result
 import com.khaymoev.my_expenses.api.model.CurrencyRemoteData
 import javax.inject.Inject
 
-class CurrencyListRemoteDataSource @Inject constructor(private val service: ApiInterface): BaseRemoteDataSource() {
+class CurrencyListRemoteDataSource @Inject constructor(private val service: ApiInterface) :
+    BaseRemoteDataSource() {
 
     suspend fun currencyList(targetCur: String): Result<CurrencyRemoteData> =
         getResult {

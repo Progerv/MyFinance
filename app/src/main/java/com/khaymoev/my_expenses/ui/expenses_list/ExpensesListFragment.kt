@@ -37,7 +37,7 @@ class ExpensesListFragment: MainNavigationFragment(), OnItemClickCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Тестовые данные
-        viewModel.addD()
+        viewModel.addTestData()
         initializeViews()
         initButton()
     }

@@ -7,21 +7,13 @@ import javax.inject.Inject
 class CategoriesListRepository @Inject constructor(
     private val categoriesListLocalDataSource: CategoriesListLocalDataSource
 ) {
-    /**
-     * Список категорий
-     */
-    val allCategoriesList: LiveData<List<CategoryEntity>> = categoriesListLocalDataSource.allCategoriesList
 
+    val allCategoriesList: LiveData<List<CategoryEntity>> = categoriesListLocalDataSource.allCategoriesList
 
     suspend fun getCategoriesListName(): List<CategoryEntity> {
         return categoriesListLocalDataSource.getCategoriesListName()
     }
 
-    /**
-     * Добавляем категорию в базу данных
-     *
-     * @param category
-     */
     suspend fun insertCategory(category: CategoryEntity) {
         categoriesListLocalDataSource.insertCategoryIntoDatabase(category)
     }

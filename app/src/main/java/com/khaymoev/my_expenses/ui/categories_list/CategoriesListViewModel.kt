@@ -16,9 +16,6 @@ class CategoriesListViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    /**
-     * [CategoryEntity] хранит полный список категорий
-     */
     val allCategoriesList: LiveData<List<CategoryEntity>> = repository.allCategoriesList
 
     fun addFirstCategories() {

@@ -9,11 +9,7 @@ class CurrencyLocalDataSource @Inject constructor(private val database: Expenses
     suspend fun currencyList(): List<CurrencyEntity> {
         return database.expensesListDao().currencyList()
     }
-    /**
-     * Вставляет данные в базу данных
-     *
-     * @param currency объект [CurrencyEntity]
-     */
+
     suspend fun insertCurrencyIntoDatabase(currency: CurrencyEntity) {
         return database.expensesListDao().insertCurrency(currency)
     }

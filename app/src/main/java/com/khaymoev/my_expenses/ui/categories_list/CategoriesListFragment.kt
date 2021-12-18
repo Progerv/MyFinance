@@ -1,6 +1,5 @@
 package com.khaymoev.my_expenses.ui.categories_list
 
-import android.app.RemoteInput
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -53,16 +52,8 @@ class CategoriesListFragment: MainNavigationFragment(), OnItemClickCallback {
         }
     }
 
-    /**
-     * Функция внутри которой выполняется подписка на обновление объектов LiveData
-     */
     override fun observeViewModel() {
-        /**
-         * Подписываемся на обновление списка затрат,
-         * при обновлении передаем данные в объект [CategoriesListAdapter].
-         * Выполняем проверку списка на пустоту, и обновляем
-         * значение внутри [CategoriesListViewModel].
-         */
+
         viewModel.allCategoriesList.doOnChange(this) {
             categoriesListAdapter.updateList(it)
         }
@@ -72,12 +63,6 @@ class CategoriesListFragment: MainNavigationFragment(), OnItemClickCallback {
         showToast("Click to expense with id = $id и name = $string")
     }
 
-    /**
-     * Отображает на экране Toast
-     *
-     * @param message текст сообщения
-     * @param duration время показа сообщения на экране
-     */
     private fun showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(context, message, duration).show()
     }

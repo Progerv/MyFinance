@@ -23,12 +23,6 @@ interface ExpensesListDao {
      */
     @Query("SELECT * FROM conversion_rates")
     suspend fun currencyList(): List<CurrencyEntity>
-//
-//    /**
-//     * Функция для получения из базы данных валюту и коэфициент пересчета
-//     */
-//    @Query("SELECT * FROM conversion_rates WHERE currencyName = :currencyName")
-//    suspend fun currencyFromId(currencyName: String): CurrencyEntity?
 
     /**
      * Записывает объект [CurrencyEntity] в базу данных.

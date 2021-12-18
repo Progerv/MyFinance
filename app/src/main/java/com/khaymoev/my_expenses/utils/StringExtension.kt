@@ -8,3 +8,7 @@ fun Number?.refactorString(): String {
         numberFormat.format(this)
     } ?: ""
 }
+
+fun Int?.convertColorToHEX(): String {
+    return this?.let { "#" + Integer.toHexString(this) } ?: ""
+}

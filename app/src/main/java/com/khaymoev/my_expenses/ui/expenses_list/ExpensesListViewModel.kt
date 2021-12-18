@@ -16,31 +16,23 @@ import javax.inject.Inject
 @HiltViewModel
 class ExpensesListViewModel @Inject constructor(private val repository: ExpensesListRepository): ViewModel() {
 
-    /**
-     * [ExpenseEntity] хранит полный список затрат
-     */
-
     val allCategoriesWithExpenses: LiveData<List<CategoryWithExpenses>> = repository.allCategoriesWithExpenses
 
-    fun addD() {
+    fun addTestData() {
         viewModelScope.launch(Dispatchers.IO)
         {
-            addFirst()
-        }
-    }
-
-    private suspend fun addFirst() {
-        repository.insertExpense(
-            ExpenseEntity(
-                idExpense = 1,
-                name = "Купил хлебушек",
-                idCategory = 1,
-                amount = 100F,
-                dateExpense = Date(),
-                currency = "RUB",
-                amountInRUB = 100F
+            repository.insertExpense(
+                ExpenseEntity(
+                    idExpense = 1,
+                    name = "Купил хлебушек",
+                    idCategory = 1,
+                    amount = 100F,
+                    dateExpense = Date(),
+                    currency = "RUB",
+                    amountInRUB = 100F
+                )
             )
-        )
+        }
     }
 
     fun withDatabaseTableToListView(listDatabase: List<CategoryWithExpenses>): List<CategoriesWithExpensesForAdapter> {
