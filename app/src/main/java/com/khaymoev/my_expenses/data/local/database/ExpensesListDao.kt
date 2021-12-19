@@ -59,7 +59,7 @@ interface ExpensesListDao {
     suspend fun categoriesListName(): List<CategoryEntity>
 
 //    /**
-//     * Функция для получения из базы данных конкретной затраты по id
+//     * Функция для получения из базы данных конкретной траты по id
 //     */
 //    @Query("SELECT * FROM expenses_list WHERE idExpense = :id")
 //    fun expenseFromId(id: Long): ExpenseEntity?

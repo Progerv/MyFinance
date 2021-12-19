@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My expenses</string>
+    <string name="app_name">My finance</string>
     <string name="list_expenses_menu_bottom">List expenses</string>
     <string name="list_categories_menu_bottom">Categories</string>
     <string name="reports_menu_bottom">Reports</string>
