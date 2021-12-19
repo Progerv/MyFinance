@@ -1,5 +1,6 @@
 package com.khaymoev.my_expenses.ui.expenses_list.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.utils.refactorString
 import kotlinx.android.synthetic.main.item_expense_list.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 interface OnItemClickCallback {
     fun onItemClick(id: Long, string: String)
@@ -36,6 +39,7 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback) 
     }
 
     class ExpensesListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         fun bind(
             model: CategoriesWithExpensesForAdapter,
             onItemClickCallback: OnItemClickCallback
@@ -45,7 +49,10 @@ class ExpensesListAdapter(private val onItemClickCallback: OnItemClickCallback) 
 
             itemView.categoryItemTextView.text = model.nameCategory
 
-            itemView.amountItemTextView.text = "${model.amount.refactorString()} ${model.currency}"
+            itemView.amountItemTextView.text = model.amount.refactorString() + " " + model.currency
+
+            val selectedDate = SimpleDateFormat("dd-MM-yyyy", Locale.ROOT).format(model.date)
+            itemView.dateExpenseItemTextView.text = selectedDate
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClick(

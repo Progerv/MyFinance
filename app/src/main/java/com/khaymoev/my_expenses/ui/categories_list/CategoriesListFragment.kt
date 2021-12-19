@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,7 +34,6 @@ class CategoriesListFragment: MainNavigationFragment(), OnItemClickCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews()
-        viewModel.addFirstCategories()
         initButton()
     }
 
@@ -60,10 +58,6 @@ class CategoriesListFragment: MainNavigationFragment(), OnItemClickCallback {
     }
 
     override fun onItemClick(id: Long, string: String) {
-        showToast("Click to expense with id = $id и name = $string")
-    }
-
-    private fun showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, message, duration).show()
+        super.showToast("Enter category name: $string")
     }
 }

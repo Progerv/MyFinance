@@ -6,6 +6,7 @@ import com.khaymoev.my_expenses.data.local.database.ExpensesDatabase
 import com.khaymoev.my_expenses.data.preferences.PreferenceStorage
 import com.khaymoev.my_expenses.data.preferences.SharedPreferencesStorage
 import com.khaymoev.my_expenses.utils.Constants
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,7 +48,7 @@ class ApplicationModule {
      */
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
         val requestInterceptor = Interceptor { chain ->
             val url = chain.request()
                 .url()
@@ -64,6 +65,7 @@ class ApplicationModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(requestInterceptor)
+            .addInterceptor(ChuckInterceptor(context))
             .connectTimeout(60, TimeUnit.SECONDS)
             .build()
     }

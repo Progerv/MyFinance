@@ -57,7 +57,7 @@ class ReportsFragment : MainNavigationFragment() {
     override fun initializeViews() {
         setupPieChart()
 
-        initStatisticList(arrayListOf<Statistic>())
+        initStatisticList(arrayListOf())
         loadPieChartData(arrayListOf())
         initButton()
     }
@@ -125,7 +125,7 @@ class ReportsFragment : MainNavigationFragment() {
             ) { resultKey, bundle ->
                 if (resultKey == "REQUEST_KEY") {
                     val date = bundle.getString("SELECTED_DATE")
-                    binding.dateFromView.setText(date)
+                    binding.dateFromView.text = date
                     dateFrom =
                         Date(TimeUnit.MILLISECONDS.toMillis(bundle.getLong("SELECTED_DATE_LONG")))
                     observeViewModel()
@@ -145,7 +145,7 @@ class ReportsFragment : MainNavigationFragment() {
             ) { resultKey, bundle ->
                 if (resultKey == "REQUEST_KEY") {
                     val date = bundle.getString("SELECTED_DATE")
-                    binding.dateToView.setText(date)
+                    binding.dateToView.text = date
                     dateTo =
                         Date(TimeUnit.MILLISECONDS.toMillis(bundle.getLong("SELECTED_DATE_LONG")))
                     observeViewModel()

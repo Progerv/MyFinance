@@ -19,7 +19,7 @@
         android:layout_margin="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -30,27 +30,25 @@
             android:text="@string/select_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/dateFromView"
             android:hint="@string/data_from_statistic"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="20dp"
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="120dp"
-            tools:text="01-05-2021" />
+            android:width="130dp" />
 
         <TextView
             android:id="@+id/dateToView"
             android:hint="@string/data_to_statistic"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="20dp"
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="120dp"
-            tools:text="31-05-2021"/>
+            android:width="130dp" />
 
     </LinearLayout>
 

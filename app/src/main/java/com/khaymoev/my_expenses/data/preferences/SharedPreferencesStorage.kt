@@ -23,7 +23,7 @@ interface PreferenceStorage {
 class SharedPreferencesStorage @Inject constructor(context: Context): PreferenceStorage {
 
     companion object {
-        const val PREFERENCES_NAME = "CURRENCY_PREFS"
+        const val PREFERENCES_NAME = "PREFS"
         const val PREFERENCES_CURRENCY = "PREFS_DATA_CURRENCY"
     }
 

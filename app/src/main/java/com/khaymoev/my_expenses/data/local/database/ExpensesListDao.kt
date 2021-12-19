@@ -39,9 +39,12 @@ interface ExpensesListDao {
     @Query("SELECT * FROM categories_list")
     fun getCategoryWithExpenses(): LiveData<List<CategoryWithExpenses>>
 
+    //TODO - Сделать метод, который берет статистику по затратам за период
+    /*
     @Transaction
     @Query("SELECT * FROM categories_list")
     suspend fun getStatistic(): List<CategoryWithExpenses>
+    */
 
     /**
      * Функция для получения из базы данных списка категорий

@@ -15,4 +15,6 @@
     <string name="data_to_statistic">data to</string>
     <string name="statistic_operations">operations</string>
     <string name="choose_color_add_category">choose color</string>
+    <string name="settings">settings</string>
+    <string name="settings_message">Setting in development</string>
 </resources>

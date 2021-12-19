@@ -90,4 +90,5 @@ dependencies {
     //Color
     implementation 'com.github.yukuku:ambilwarna:2.0.1'
 
+    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
 }

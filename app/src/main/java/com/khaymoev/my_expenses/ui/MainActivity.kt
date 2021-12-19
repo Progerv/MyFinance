@@ -48,6 +48,10 @@ class MainActivity: AppCompatActivity(), NavigationHost {
         }
 
         viewModel.loadCurrencyFromApi()
+        viewModel.addFirstCategories()
+        viewModel.addTestData()
+
+
     }
 
     override fun registerToolbarWithNavigation(toolbar: Toolbar) {

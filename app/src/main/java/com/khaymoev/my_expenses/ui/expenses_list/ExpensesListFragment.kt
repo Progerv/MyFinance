@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,13 +30,13 @@ class ExpensesListFragment: MainNavigationFragment(), OnItemClickCallback {
     ): View? {
         val myViewFragment = inflater.inflate(R.layout.fragment_expenses_list, container, false)
         observeViewModel()
+
         return myViewFragment
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Тестовые данные
-        viewModel.addTestData()
+
         initializeViews()
         initButton()
     }
@@ -55,33 +54,13 @@ class ExpensesListFragment: MainNavigationFragment(), OnItemClickCallback {
         }
     }
 
-    /**
-     * Функция внутри которой выполняется подписка на обновление объектов LiveData
-     */
     override fun observeViewModel() {
-        /**
-         * Подписываемся на обновление списка затрат,
-         * при обновлении передаем данные в объект [ExpensesListAdapter].
-         * Выполняем проверку списка на пустоту, и обновляем
-         * значение внутри [ExpensesListViewModel].
-         */
         viewModel.allCategoriesWithExpenses.doOnChange(this) {
             expenseListAdapter.updateList(viewModel.withDatabaseTableToListView(it))
         }
     }
 
     override fun onItemClick(id: Long, string: String) {
-        showToast("Click to expense with id = $id и name = $string")
+        super.showToast("Enter expense name: $string")
     }
-
-    /**
-     * Отображает на экране Toast
-     *
-     * @param message текст сообщения
-     * @param duration время показа сообщения на экране
-     */
-    private fun showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, message, duration).show()
-    }
-
 }

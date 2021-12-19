@@ -1,6 +1,5 @@
 package com.khaymoev.my_expenses.ui.expenses_list.expense_edit
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,11 +27,8 @@ class ExpenseEditViewModel @Inject constructor(
 
     private var categoryList: List<CategoryEntity>? = null
 
-    // Create the model which contains data for our UI
     private var model: List<String> = listOf()
 
-    // Create MutableLiveData which MainFragment can subscribe to
-    // When this data changes, it triggers the UI to do an update
     val uiTextLiveData = MutableLiveData<List<String>>()
 
     fun setListCategories() {
@@ -63,14 +59,15 @@ class ExpenseEditViewModel @Inject constructor(
         currency: String
     ) {
 
-        var amountRUB = 0F
-        val currencyEntity = currencyList?.find { it.currencyName == currency }
+        var amountRUB: Float
+        val currencyEntity =
+            currencyList?.find { it.currencyName == currency && it.date == getStartOfDay() }
         amountRUB = if (currencyEntity != null) {
-                if (currencyEntity.currencyValue != 0.0) {
-                    (amount / currencyEntity.currencyValue).toFloat().also { amountRUB = it }
-                } else {
-                    amount
-                }
+            if (currencyEntity.currencyValue != 0.0) {
+                (amount / currencyEntity.currencyValue).toFloat().also { amountRUB = it }
+            } else {
+                amount
+            }
         } else {
             amount
         }
@@ -88,20 +85,13 @@ class ExpenseEditViewModel @Inject constructor(
             )
         }
     }
-}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//fun updateExpense(id: Long, name: String, idCategory: Long = 1, nameCategory: String = "", amount: Float) {
-//    viewModelScope.launch(Dispatchers.IO)
-//    {
-//        repositoryExpenses.insertExpense(
-//            ExpenseEntity(
-//                idExpense = id,
-//                name = name,
-//                idCategory = idCategory,
-//                amount = amount,
-//                dateExpense = Date()
-//            )
-//        )
-//    }
-//}
+    private fun getStartOfDay(): Date {
+        val calendar = Calendar.getInstance()
+        val year = calendar[Calendar.YEAR]
+        val month = calendar[Calendar.MONTH]
+        val day = calendar[Calendar.DATE]
+        calendar[year, month, day, 0, 0] = 0
+        return calendar.time
+    }
+}

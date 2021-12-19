@@ -39,6 +39,16 @@
             tools:text="Example name expense" />
 
         <TextView
+            android:id="@+id/dateExpenseItemTextView"
+            android:layout_width="0dp"
+            android:textColor="#616161"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/expenseItemTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/expenseItemTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="02-05-2021"/>
+
+        <TextView
             android:id="@+id/amountItemTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -2,7 +2,9 @@ package com.khaymoev.my_expenses.common
 
 import android.content.Context
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.khaymoev.my_expenses.R
@@ -63,7 +65,24 @@ abstract class MainNavigationFragment: Fragment(), InitViews {
 
         val host = navigationHost ?: return
         val mainToolbar: Toolbar = fragmentView?.findViewById(R.id.toolbar) ?: return
+        mainToolbar.inflateMenu(R.menu.main_menu)
+        mainToolbar.setOnMenuItemClickListener {
+            onOptionsItemSelected(it)
+        }
 
         host.registerToolbarWithNavigation(mainToolbar)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.settings_main ->
+                showToast(resources.getString(R.string.settings_message))
+        }
+        return false
+    }
+
+    fun showToast(textMessage: String) {
+        Toast.makeText(activity, textMessage, Toast.LENGTH_SHORT).show()
     }
 }
