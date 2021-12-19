@@ -12,11 +12,11 @@ import com.khaymoev.my_expenses.data.local.database.entities.ExpenseEntity
 @Dao
 interface ExpensesListDao {
 
-    /**
-     * Функция для получения из базы данных полного списка затрат
-     */
-    @Query("SELECT * FROM expenses_list")
-    fun expensesList(): LiveData<List<ExpenseEntity>>
+//    /**
+//     * Функция для получения из базы данных полного списка затрат
+//     */
+//    @Query("SELECT * FROM expenses_list")
+//    fun expensesList(): LiveData<List<ExpenseEntity>>
 
     /**
      * Функция для получения из базы данных список валют
@@ -58,17 +58,17 @@ interface ExpensesListDao {
     @Query("SELECT id, name FROM categories_list")
     suspend fun categoriesListName(): List<CategoryEntity>
 
-    /**
-     * Функция для получения из базы данных конкретной затраты по id
-     */
-    @Query("SELECT * FROM expenses_list WHERE idExpense = :id")
-    fun expenseFromId(id: Long): ExpenseEntity?
+//    /**
+//     * Функция для получения из базы данных конкретной затраты по id
+//     */
+//    @Query("SELECT * FROM expenses_list WHERE idExpense = :id")
+//    fun expenseFromId(id: Long): ExpenseEntity?
 
-    /**
-     * Функция для получения из базы данных конкретной категории по id
-     */
-    @Query("SELECT * FROM categories_list WHERE id = :id")
-    fun categoryFromId(id: Long): CategoryEntity?
+//    /**
+//     * Функция для получения из базы данных конкретной категории по id
+//     */
+//    @Query("SELECT * FROM categories_list WHERE id = :id")
+//    fun categoryFromId(id: Long): CategoryEntity?
 
     /**
      * Записывает данные в базу объект [ExpenseEntity] затрату
@@ -86,27 +86,27 @@ interface ExpensesListDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCategory(item: CategoryEntity)
 
-    /**
-     * Функция для удаления затраты по [id] из таблицы expenses_list из базы данных
-     */
-    @Query("DELETE FROM expenses_list WHERE idExpense = :id")
-    suspend fun deleteExpense(id: Long)
+//    /**
+//     * Функция для удаления затраты по [id] из таблицы expenses_list из базы данных
+//     */
+//    @Query("DELETE FROM expenses_list WHERE idExpense = :id")
+//    suspend fun deleteExpense(id: Long)
 
-    /**
-     * Функция для удаления всех элементов из таблицы expenses_list из базы данных
-     */
-    @Query("DELETE FROM expenses_list")
-    suspend fun deleteAll()
+//    /**
+//     * Функция для удаления всех элементов из таблицы expenses_list из базы данных
+//     */
+//    @Query("DELETE FROM expenses_list")
+//    suspend fun deleteAll()
 
-    /**
-     * Функция для удаления категории по [id] из таблицы categories_list из базы данных
-     */
-    @Query("DELETE FROM categories_list WHERE id = :id")
-    suspend fun deleteCategory(id: Long)
+//    /**
+//     * Функция для удаления категории по [id] из таблицы categories_list из базы данных
+//     */
+//    @Query("DELETE FROM categories_list WHERE id = :id")
+//    suspend fun deleteCategory(id: Long)
 
-    /**
-     * Функция для удаления всех элементов из таблицы categories_list
-     */
-    @Query("DELETE FROM categories_list")
-    suspend fun deleteCategoriesAll()
+//    /**
+//     * Функция для удаления всех элементов из таблицы categories_list
+//     */
+//    @Query("DELETE FROM categories_list")
+//    suspend fun deleteCategoriesAll()
 }

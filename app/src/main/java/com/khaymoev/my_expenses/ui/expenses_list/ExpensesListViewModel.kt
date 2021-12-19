@@ -15,7 +15,7 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
 
     fun withDatabaseTableToListView(listDatabase: List<CategoryWithExpenses>): List<CategoriesWithExpensesForAdapter> {
 
-        val list: MutableList<CategoriesWithExpensesForAdapter> = mutableListOf()
+        var list: MutableList<CategoriesWithExpensesForAdapter> = mutableListOf()
 
         listDatabase.forEach {
                 categoryWithExpenses: CategoryWithExpenses ->
@@ -34,6 +34,7 @@ class ExpensesListViewModel @Inject constructor(private val repository: Expenses
             }
         }
 
+        list.sortByDescending { it.date }
         return list
     }
 }

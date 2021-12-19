@@ -6,7 +6,6 @@ import com.khaymoev.my_expenses.api.Result
 import com.khaymoev.my_expenses.api.successed
 import com.khaymoev.my_expenses.data.local.database.entities.CurrencyEntity
 import com.khaymoev.my_expenses.utils.Constants
-import java.util.*
 
 class CurrencyListRepository @Inject constructor(
     private val currencyListRemoteDataSource: CurrencyListRemoteDataSource,
@@ -31,24 +30,24 @@ class CurrencyListRepository @Inject constructor(
                             currencyLocalDataSource.insertCurrencyIntoDatabase(
                                 CurrencyEntity(
                                     currencyName = "RUB",
-                                    currencyValue = anyCurrency.RUB.toDouble(),
-                                    date = getStartOfDay()
+                                    currencyValue = anyCurrency.RUB.toDouble()
+                                    //Date(result.data.time_last_update_unix * 1000L)
                                 )
                             )
 
                             currencyLocalDataSource.insertCurrencyIntoDatabase(
                                 CurrencyEntity(
                                     currencyName = "EUR",
-                                    currencyValue = anyCurrency.EUR,
-                                    date = getStartOfDay()
+                                    currencyValue = anyCurrency.EUR
+                                    //Date(result.data.time_last_update_unix * 1000L)
                                 )
                             )
 
                             currencyLocalDataSource.insertCurrencyIntoDatabase(
                                 CurrencyEntity(
                                     currencyName = "USD",
-                                    currencyValue = anyCurrency.USD,
-                                    date = getStartOfDay() ////Date(result.data.time_last_update_unix * 1000L)
+                                    currencyValue = anyCurrency.USD
+                                    //Date(result.data.time_last_update_unix * 1000L)
                                 )
                             )
                         }
@@ -71,14 +70,5 @@ class CurrencyListRepository @Inject constructor(
 
     suspend fun currencyList(): List<CurrencyEntity> {
         return currencyLocalDataSource.currencyList()
-    }
-
-    private fun getStartOfDay(): Date {
-        val calendar = Calendar.getInstance()
-        val year = calendar[Calendar.YEAR]
-        val month = calendar[Calendar.MONTH]
-        val day = calendar[Calendar.DATE]
-        calendar[year, month, day, 0, 0] = 0
-        return calendar.time
     }
 }
