@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -14,6 +15,7 @@ import com.khaymoev.my_expenses.databinding.FragmentAddNewCategoryBinding
 import com.khaymoev.my_expenses.utils.convertColorToHEX
 import dagger.hilt.android.AndroidEntryPoint
 import yuku.ambilwarna.AmbilWarnaDialog
+import androidx.lifecycle.Observer
 
 @AndroidEntryPoint
 class CategoryEditBottomFragment(): BottomSheetDialogFragment() {
@@ -43,11 +45,20 @@ class CategoryEditBottomFragment(): BottomSheetDialogFragment() {
                 binding.categoryItemTextView.text.toString(),
                 defaultColour.convertColorToHEX()
             )
-            fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         binding.chooseColourButton.setOnClickListener {
             openColorPicker()
         }
+
+        viewModel.added.observe(this, Observer {
+            if (it) {
+                Toast.makeText(
+                    requireActivity().applicationContext,
+                    resources.getString(R.string.added_new_category_button), Toast.LENGTH_LONG
+                ).show()
+                fragmentManager?.beginTransaction()?.remove(this)?.commit()
+            }
+        })
     }
 
     private fun openColorPicker() {

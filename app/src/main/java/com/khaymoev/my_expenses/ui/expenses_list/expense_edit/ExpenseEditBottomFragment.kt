@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -58,8 +59,17 @@ class ExpenseEditBottomFragment() : BottomSheetDialogFragment() {
                 nameCategory = binding.categoryTextInputEditText.text.toString(),
                 currency = binding.currencyTextInputEditText.text.toString()
             )
-            fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
+
+        viewModel.added.observe(this, Observer {
+            if (it) {
+                Toast.makeText(
+                    requireActivity().applicationContext,
+                    resources.getString(R.string.added_new_expense_button), Toast.LENGTH_LONG
+                ).show()
+                fragmentManager?.beginTransaction()?.remove(this)?.commit()
+            }
+        })
     }
 
     private fun initSpinnerCategories(items: List<String>) {

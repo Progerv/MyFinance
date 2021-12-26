@@ -23,6 +23,12 @@ class ExpenseEditViewModel @Inject constructor(
 ) :
     ViewModel() {
 
+    var added = MutableLiveData<Boolean>()
+
+    init {
+        added.value = false
+    }
+
     private var currencyList: List<CurrencyEntity>? = null
 
     private var categoryList: List<CategoryEntity>? = null
@@ -83,6 +89,7 @@ class ExpenseEditViewModel @Inject constructor(
                     amountInRUB = amountRUB
                 )
             )
+            added.postValue(true)
         }
     }
 }

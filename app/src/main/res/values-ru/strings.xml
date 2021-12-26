@@ -12,10 +12,12 @@
     <string name="label_hint_amount_expense">Сумма траты</string>
     <string name="label_hint_currency_expense">Валюта</string>
     <string name="select_period">Выбор периода:</string>
-    <string name="data_from_statistic">дата от</string>
-    <string name="data_to_statistic">дата до</string>
-    <string name="statistic_operations">операции</string>
-    <string name="choose_color_add_category">выбрать цвет</string>
-    <string name="settings">настройки</string>
+    <string name="data_from_statistic">Дата от</string>
+    <string name="data_to_statistic">Дата до</string>
+    <string name="statistic_operations">Операции</string>
+    <string name="choose_color_add_category">Выбрать цвет</string>
+    <string name="settings">Настройки</string>
     <string name="settings_message">Настройки в разработке</string>
+    <string name="added_new_category_button">Добавлена новая категория</string>
+    <string name="added_new_expense_button">Добавлена новая трата</string>
 </resources>

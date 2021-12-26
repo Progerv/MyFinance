@@ -1,5 +1,6 @@
 package com.khaymoev.my_expenses.ui.categories_list.category_edit
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khaymoev.my_expenses.data.local.database.entities.CategoryEntity
@@ -13,6 +14,12 @@ import javax.inject.Inject
 class CategoryEditViewModel @Inject constructor(private val repository: CategoriesListRepository) :
     ViewModel() {
 
+    var added = MutableLiveData<Boolean>()
+
+    init {
+        added.value = false
+    }
+
     fun addNewCategory(name: String, color: String = "#000000") {
         viewModelScope.launch(Dispatchers.IO)
         {
@@ -22,6 +29,7 @@ class CategoryEditViewModel @Inject constructor(private val repository: Categori
                     colorCategory = color
                 )
             )
+            added.postValue(true)
         }
     }
 }
