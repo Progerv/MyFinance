@@ -1,23 +1,18 @@
 package com.khaymoev.my_expenses.ui.reports
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.formatter.PercentFormatter
 import com.khaymoev.my_expenses.ui.date_selecter.DatePickerFragment
 import com.khaymoev.my_expenses.R
 import com.khaymoev.my_expenses.common.MainNavigationFragment
 import com.khaymoev.my_expenses.databinding.FragmentReportsBinding
 import com.khaymoev.my_expenses.ui.reports.adapter.Statistic
 import com.khaymoev.my_expenses.ui.reports.adapter.StatisticAdapter
+import com.khaymoev.my_expenses.utils.ChartHelper
 import com.khaymoev.my_expenses.utils.doOnChange
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Date
@@ -55,55 +50,15 @@ class ReportsFragment : MainNavigationFragment() {
     }
 
     override fun initializeViews() {
-        setupPieChart()
 
         initStatisticList(arrayListOf())
         loadPieChartData(arrayListOf())
         initButton()
     }
 
-    private fun setupPieChart() {
-        binding.pieChartDiagram.isDrawHoleEnabled = true
-        binding.pieChartDiagram.setUsePercentValues(true)
-        binding.pieChartDiagram.setEntryLabelColor(R.color.black)
-        binding.pieChartDiagram.centerText = "Статистика"
-        binding.pieChartDiagram.setCenterTextSize(12F)
-        binding.pieChartDiagram.description.isEnabled = false
-
-        val l = binding.pieChartDiagram.legend
-        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-        l.orientation = Legend.LegendOrientation.HORIZONTAL
-        l.setDrawInside(false)
-        l.isEnabled = true
-
-    }
-
     private fun loadPieChartData(prodsList: ArrayList<Statistic>) {
 
-        val dataEntries = ArrayList<PieEntry>()
-        val colors: ArrayList<Int> = ArrayList()
-
-        prodsList.forEach {
-            dataEntries.add(
-                PieEntry(
-                    it.expenseAmount.toFloat()
-                )
-            )
-            colors.add(Color.parseColor(it.color))
-        }
-
-        val dataSet = PieDataSet(dataEntries, "")
-        dataSet.colors = colors
-
-        val data = PieData(dataSet)
-        data.setDrawValues(true)
-        data.setValueFormatter(PercentFormatter(binding.pieChartDiagram))
-        data.setValueTextSize(12f)
-        data.setValueTextColor(R.color.black)
-
-        binding.pieChartDiagram.data = data
-        binding.pieChartDiagram.invalidate()
+        ChartHelper.setupPieChart(binding.pieChartDiagram, prodsList)
 
     }
 

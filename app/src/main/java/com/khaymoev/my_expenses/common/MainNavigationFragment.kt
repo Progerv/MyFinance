@@ -36,7 +36,7 @@ interface NavigationHost {
 /**
  * [MainNavigationFragment] регистрирует панель инструментов из фрагмента с активностью
  */
-abstract class MainNavigationFragment: Fragment(), InitViews {
+abstract class MainNavigationFragment : Fragment(), InitViews {
     private var navigationHost: NavigationHost? = null
     private var fragmentView: View? = null
 
@@ -45,11 +45,6 @@ abstract class MainNavigationFragment: Fragment(), InitViews {
         if (context is NavigationHost) {
             navigationHost = context
         }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        navigationHost = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,6 +60,7 @@ abstract class MainNavigationFragment: Fragment(), InitViews {
 
         val host = navigationHost ?: return
         val mainToolbar: Toolbar = fragmentView?.findViewById(R.id.toolbar) ?: return
+
         mainToolbar.inflateMenu(R.menu.main_menu)
         mainToolbar.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
@@ -72,6 +68,12 @@ abstract class MainNavigationFragment: Fragment(), InitViews {
 
         host.registerToolbarWithNavigation(mainToolbar)
         setHasOptionsMenu(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        navigationHost = null
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
