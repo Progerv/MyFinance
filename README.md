@@ -1,7 +1,7 @@
 Реализация итогового задания курса "Мобильная разработка" от ООО "Инвольта Образование" информация о курсе:
 
-[https://2035.university/]на сайте Университета 2035
-[https://science.involta.ru/course/mobilnaia-razrabotka]на сайте Инвольты
+[на сайте Университета 2035](https://2035.university/)
+[на сайте Инвольты](https://science.involta.ru/course/mobilnaia-razrabotka)
 
 #Задача
 Мобильное приложение «Мои финансы»
